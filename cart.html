@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div class="continue-shopping">
+    <a href="">
+      <img src="" alt="Back arrow">
+      Continue Shopping
+    </a>
+  </div>
+
+  <hr class="divider">
+
+  <header class="cart-header">
+    <h1>Shopping Cart</h1>
+    <p>You have <span id="cart-count">0</span> items in your cart</p>
+  </header>
+
+  <div class="cart-item">
+    <img src="" alt="Product image" class="product-img">
+    <div class="product-info">
+      <h2 class="product-title">Product Example</h2>
+      <p class="product-desc">Description for product</p>
+    </div>
+    <div class="quantity">
+      <button class="decrease">-</button>
+      <span class="count">1</span>
+      <button class="increase">+</button>
+    </div>
+    <p class="product-price">$20.00</p>
+    <button class="remove-btn">
+      <img src="" alt="Remove"> Remove
+    </button>
+  </div>
+
+  <div class="cart-details">
+    <h2>Card Details</h2>
+    <p>Card type</p>
+
+    <div class="card-type">
+      <button><img src="" alt="Visa"></button>
+      <button><img src="" alt="Paypal"></button>
+      <button><img src="" alt="MasterCard"></button>
+    </div>
+
+    <form>
+      <label for="name">Name on card</label><br>
+      <input id="name" type="text" placeholder="Name"><br>
+
+      <label for="card-number">Card Number</label><br>
+      <input id="card-number" type="text" placeholder="1111 2222 3333 4444"><br>
+
+      <div class="form-row">
+        <div class="exp-date">
+          <label for="date">Expiration date</label><br>
+          <input id="date" type="text" placeholder="mm/yy">
+        </div>
+        <div class="cvv-number">
+          <label for="cvv">CVV</label><br>
+          <input id="cvv" type="text" placeholder="123">
+        </div>
+      </div>
+
+      <hr>
+      <button type="submit" class="checkout-btn">Checkout</button>
+    </form>
+  </div>
+</body>
+</html>
