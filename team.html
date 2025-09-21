@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/discounts.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">Ashana Hub</div>
+            <div class="navbar-links">
+                <a href="main.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="auth.html">Login</a>
+                <a href="discounts.html">Discounts</a>
+                <a href="team.html">Team</a>
+            </div>
+        </div>
+    </nav>
+    <div id="top-banner" class="team-section">
+    <div class="team-title">Meet Our Team</div>
+        <div class="member-block">
+            <img class="member-photo" src="images/team-aldiar.png" alt="Aldiyar">
+            <div class="member-info">
+                <span class="member-role">Founder</span>
+                <span class="member-name">Aldiyar</span>
+                <span class="member-quote">"Food is the ingredient that binds us together."</span>
+                <span class="member-fav">Favorite dish: Kyurdak</span>
+                <span class="member-contact">Email: aldiar@ashana.com</span>
+                <span class="member-bio">Aldiyar started Ashana Hub to bring people together over great food. He loves experimenting with new recipes and believes every meal should be memorable.</span>
+            </div>
+        </div>
+        <div class="member-block">
+            <img class="member-photo" src="images/team-aibek.png" alt="Aibek">
+            <div class="member-info">
+                <span class="member-role">Chef</span>
+                <span class="member-name">Aibek</span>
+                <span class="member-quote">"Every dish is a new adventure!"</span>
+                <span class="member-fav">Favorite dish: Pasta with Chicken</span>
+                <span class="member-contact">Email: aibek@ashana.com</span>
+                <span class="member-bio">Aibek crafts the menu and ensures every plate is perfect. He’s passionate about fresh ingredients and creative flavors.</span>
+            </div>
+        </div>
+        <div class="member-block">
+            <img class="member-photo" src="images/team-nurgeldi.png" alt="Nurgeldi">
+            <div class="member-info">
+                <span class="member-role">Manager</span>
+                <span class="member-name">Nurgeldi</span>
+                <span class="member-quote">"Service with a smile, always."</span>
+                <span class="member-fav">Favorite dish: Cheese Pizza</span>
+                <span class="member-contact">Email: nurgeldi@ashana.com</span>
+                <span class="member-bio">Nurgeldi keeps the restaurant running smoothly and makes sure every guest feels at home.</span>
+            </div>
+        </div>
+        <div class="member-block">
+            <img class="member-photo" src="images/team-almadi.png" alt="Almadi">
+            <div class="member-info">
+                <span class="member-role">Barista</span>
+                <span class="member-name">Almadi</span>
+                <span class="member-quote">"Life happens, coffee helps!"</span>
+                <span class="member-fav">Favorite dish: Lagman</span>
+                <span class="member-contact">Email: almadi@ashana.com</span>
+                <span class="member-bio">Almadi is the master of coffee and desserts, always ready with a smile and a fresh brew.</span>
+            </div>
+        </div>
+    </div>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.discount-card');
+        cards.forEach((card, i) => {
+            card.style.animationDelay = (i * 0.12) + 's';
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,3 +1,51 @@
+body.no-margin {
+    margin: 0;
+    padding: 0;
+}
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(210,105,30,0.07);
+    z-index: 1000;
+}
+.navbar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+}
+.navbar-logo {
+    font-size: 1.3em;
+    color: #d2691e;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.navbar-links {
+    display: flex;
+    gap: 28px;
+}
+.navbar-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.navbar-links a:hover {
+    color: #d2691e;
+}
+.auth-form-offset {
+    margin-top: 80px;
+}
+.small-text {
+    font-size: small;
+}
 body{
     background-color: white;
     display: flex;
