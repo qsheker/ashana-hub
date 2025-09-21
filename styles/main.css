@@ -1,6 +1,4 @@
-/* ==========================
-   Cherry Style Theme
-   ========================== */
+/* Cherry Style Theme */
 
 /* Google Fonts:
    Montserrat & Poppins
@@ -16,7 +14,6 @@
   --white: #fff;
 }
 
-/* ===== Global ===== */
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +27,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Header ===== */
 .site-header {
   height: 120px;
   display: flex;
@@ -46,7 +42,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(120, 36, 60); /* затемнение фото */
+  background: rgb(120, 36, 60);
 }
 
 .site-header h1 {
@@ -57,7 +53,6 @@ body {
   z-index: 1;
 }
 
-/* ===== Navigation ===== */
 nav {
   text-align: center;
   background: var(--cherry-light);
@@ -83,7 +78,6 @@ nav a:hover {
   transform: scale(1.05);
 }
 
-/* ===== Sections ===== */
 section {
   max-width: 1100px;
   margin: 40px auto;
@@ -101,7 +95,6 @@ p {
   margin-bottom: 15px;
 }
 
-/* ===== Cards ===== */
 .card, .food-item {
   background: var(--white);
   border: 1px solid #f1c5ce;
@@ -116,7 +109,6 @@ p {
   text-align: center;
 }
 
-/* ===== Reviews ===== */
 #reviews {
   background: var(--white);
   border: 1px solid #f1c5ce;
@@ -126,7 +118,7 @@ p {
   max-width: 800px;
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center; /* центрируем контент */
+  text-align: center;
 }
 
 #reviews:hover {
@@ -171,7 +163,6 @@ p {
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-/* ===== Buttons ===== */
 button {
   background: var(--cherry);
   color: var(--white);
@@ -189,7 +180,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ===== Footer ===== */
 footer {
   background: var(--cherry-dark);
   color: var(--white);
@@ -200,7 +190,7 @@ footer {
 
 a {
   color: black;
-  text-decoration: none; /* убираем подчёркивание */
+  text-decoration: none;
   transition: 0.3s;
 }
 
