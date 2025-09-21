@@ -2,6 +2,8 @@
    Cherry Style Theme
    ======================= */
 
+/* Fonts Link : "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" */
+
 /* Общие цвета */
 :root {
   --cherry-dark: #990033;
@@ -13,6 +15,7 @@
 
 /* Фон и текст */
 body {
+  font-family: 'Poppins', sans-serif;
   background-color: var(--cherry-bg);
   color: var(--cherry-text);
   font-family: "Segoe UI", Arial, sans-serif;
@@ -22,6 +25,7 @@ body {
 
 /* Заголовки */
 h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
   color: var(--cherry-dark);
   margin-bottom: 10px;
 }
