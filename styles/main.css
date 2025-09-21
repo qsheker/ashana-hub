@@ -1,10 +1,7 @@
-/* =======================
-   Cherry Style Theme
-   ======================= */
+/* Cherry Style Theme */
 
 /* Fonts Link : "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" */
 
-/* Общие цвета */
 :root {
   --cherry-dark: #990033;
   --cherry: #CC0033;
@@ -13,7 +10,24 @@
   --cherry-text: #2B0A0A;
 }
 
-/* Фон и текст */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.site-header {
+  height: 100px;
+  background-image: url("images/restor.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: rgb(248, 248, 248);
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--cherry-bg);
@@ -23,14 +37,18 @@ body {
   padding: 0;
 }
 
-/* Заголовки */
 h1, h2, h3 {
   font-family: 'Montserrat', sans-serif;
   color: var(--cherry-dark);
   margin-bottom: 10px;
 }
 
-/* Ссылки */
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--cherry-text);
+  margin-bottom: 10px;
+}
+
 a {
   color: var(--cherry);
   text-decoration: none;
@@ -41,7 +59,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Кнопки */
 button {
   background: var(--cherry);
   color: white;
@@ -56,7 +73,6 @@ button:hover {
   background: var(--cherry-light);
 }
 
-/* Карточки */
 .card {
   background: white;
   border: 1px solid var(--cherry-light);
