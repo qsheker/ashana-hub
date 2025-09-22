@@ -13,6 +13,11 @@
   box-sizing: border-box;
 }
 
+#burgerimg {
+    height: 45px;
+    width: 40;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--cherry-bg);
