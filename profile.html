@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashana Hub — Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="brand">Ashana Hub</div>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="auth.html">Login</a></li>
+        <li><a id="profile-link" class="active" href="profile.html">Profile</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <h1>Personal Account</h1>
+
+  <section id="user-card" class="card">
+    <h2>My Info</h2>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <img class="avatar" src="" alt="">
+      <div>
+        <p><strong>Name:</strong> Name</p>
+        <p><strong>Email:</strong> @example.com</p>
+        <p><strong>Status:</strong> Member</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Settings</h2>
+    <form>
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="Your username">
+
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" placeholder="+7 700 000 00 00">
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" rows="3" placeholder="Street, building, apartment"></textarea>
+
+      <div style="margin-top:10px">
+        <button class="btn" type="submit">Save changes</button>
+        <button class="btn secondary" type="button">Logout</button>
+      </div>
+    </form>
+  </section>
+  <section class="card">
+    <h2>Order History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10021</td><td>2025-09-10</td><td>Lagman, Tea</td><td>2,300 ₸</td><td>Delivered</td>
+        </tr>
+        <tr>
+          <td>10022</td><td>2025-09-18</td><td>Plov, Salad</td><td>3,100 ₸</td><td>Processing</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Ashana Hub</p>
+    <p>Team: <strong>Cherry Devs</strong> — Members: <em>впиши всех участников</em>. Group: <em>впиши свою группу</em>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
