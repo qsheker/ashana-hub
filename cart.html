@@ -5,6 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
   <link rel="stylesheet" href="styles/cart.css">
+  <style>
+  .layout {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:"header header" "sidebar main" "footer footer";
+    min-height: 100vh;
+  }
+  .header { 
+    grid-area: header; 
+  }
+  .sidebar {
+    grid-area: sidebar;
+    background:#f0f0f0;
+    padding:20px;
+  }
+  .main {
+    grid-area: main;
+    padding:20px;
+  }
+  .footer {
+    grid-area: footer;
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+  }
+
+  </style>
 </head>
 <body>
   <nav class="navbar-fixed">
@@ -70,6 +99,22 @@
           <img src="images/Trash Can.png" alt="Remove"> 
         </button>
       </div>
+      <div class="cart-item">
+        <img src="images/fries.jpg" alt="Product image" class="product-img">
+        <div class="product-info">
+          <h2 class="product-title">Fries</h2>
+          <p class="product-desc">Fries only with salt</p>
+        </div>
+        <div class="quantity">
+          <button class="decrease">-</button>
+          <span class="count">1</span>
+          <button class="increase">+</button>
+        </div>
+        <p class="product-price">$3.00</p>
+        <button class="remove-btn">
+          <img src="images/Trash Can.png" alt="Remove"> 
+        </button>
+      </div>
     </div>
 
     <div class="card-details">
@@ -110,7 +155,6 @@
         <button type="submit" class="checkout-btn">Checkout</button>
       </form>
     </div>
-
   </div>
 </body>
 </html>
