@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authorization</title>
+    <link rel="stylesheet" href="styles/auth.css">
 </head>
-<body>
-    <div class="auth-form">
+<body class="no-margin">
+    <header class="navbar-fixed">
+        <div class="navbar-container">
+            <div class="navbar-logo">Ashana Hub</div>
+            <nav class="navbar-links">
+                <a href="main.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="auth.html">Login</a>
+                <a href="discounts.html">Discounts</a>
+                <a href="team.html">Team</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-form auth-form-offset">
+        <h1>Login</h1>    
     <form>
         <div class="email-label">
             <label for="Email">Email</label>
@@ -21,24 +38,25 @@
         </div>
 
         <div class="auth-option">
-            <input type="checkbox" id="Remember">
-            <label for="Remember">Remember me</label>
+            <div class="remember">
+                <input type="checkbox" id="Remember">
+                <label for="Remember">Remember me</label>
+            </div>
             <a href="">Forgot password</a>
         </div>
 
+
         <div class="sign-in">
-            <button class="sign-in-button">Sign in</button>
+            <button class="sign-in-button" type="submit">Sign in</button>
         </div>
-        <div>
-            <p style="font-size: small;">Don't have an account?</p>
-            <a class="register-ref" href="">Sign up for free!</a>
+        <div class="sign-up">
+            <p class="small-text">Don't have an account?</p>
+            <a class="register-ref" href="">Sign up</a>
         </div>
     </form>
     </div>
 
-    <footer>
-        <p>Team: SocialNetwork</p>
-        <p>Members: Aldiyar, Aibek, Nurgeldi, Almadi</p>
-    </footer>
+
+
 </body>
 </html>
