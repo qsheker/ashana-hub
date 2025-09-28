@@ -1,10 +1,10 @@
 /* --- Cherry-Cart Minimal Style for AsxanaHub (Part 3 Assignment 3) --- */
 
 :root {
-  --primary: #FF5E5B; /* акцентный цвет */
-  --border: #000;     /* чёрные границы */
-  --bg: #fff;         /* фон */
-  --text: #222;       /* текст */
+  --primary: #FF5E5B;
+  --border: #000;     
+  --bg: #fff;       
+  --text: #222;       
 }
 
 * {
@@ -22,11 +22,11 @@ nav {
 
 nav ul {
   display: flex;
-  justify-content: center;  /* центрирует горизонтально */
-  align-items: center;      /* центрирует вертикально */
+  justify-content: center; 
+  align-items: center;
   gap: 25px;
   list-style: none;
-  text-align: center;       /* для старых браузеров */
+  text-align: center; 
 }
 
 nav a {
@@ -34,7 +34,7 @@ nav a {
   color: var(--text);
   font-weight: 500;
   transition: color 0.2s;
-  text-align: center;       /* центр текста внутри ссылок */
+  text-align: center;
 }
 
 nav a:hover {
@@ -48,7 +48,6 @@ body {
   line-height: 1.6;
 }
 
-/* --- Навбар (Flexbox) --- */
 nav {
   background: var(--bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -59,7 +58,7 @@ nav {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; /* логотип + ссылки */
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   height: 60px;
@@ -88,7 +87,6 @@ nav {
   color: var(--primary);
 }
 
-/* --- Заголовки --- */
 h1, h2 {
   font-family: 'Courier New', monospace;
   color: var(--text);
@@ -105,10 +103,9 @@ h2 {
   margin: 20px 0;
 }
 
-/* --- Основной контент (Grid) --- */
 main {
   display: grid;
-  grid-template-columns: 3fr 1fr; /* контент + сайдбар */
+  grid-template-columns: 3fr 1fr;
   gap: 30px;
   max-width: 1100px;
   margin: 0 auto;
@@ -117,11 +114,10 @@ main {
 
 @media (max-width: 900px) {
   main {
-    grid-template-columns: 1fr; /* мобильная версия */
+    grid-template-columns: 1fr;
   }
 }
 
-/* --- Карточки (Flexbox для содержимого) --- */
 .card, .food-item, .about-card, .review-card {
   display: flex;
   flex-direction: column;
@@ -151,7 +147,6 @@ main {
   margin-bottom: 12px;
 }
 
-/* --- Автор отзывов --- */
 .review-author {
   font-weight: bold;
   font-size: 0.9rem;
@@ -159,7 +154,6 @@ main {
   margin-top: 8px;
 }
 
-/* --- Кнопки --- */
 button {
   background: var(--primary);
   color: var(--bg);
@@ -177,7 +171,6 @@ button:hover {
   box-shadow: 4px 4px 0px var(--border);
 }
 
-/* --- Сетки карточек для About и Reviews (Grid) --- */
 .about-container, .reviews-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -185,7 +178,6 @@ button:hover {
   margin-top: 20px;
 }
 
-/* --- Футер --- */
 footer {
   background: var(--bg);
   color: var(--text);
