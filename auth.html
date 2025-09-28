@@ -6,8 +6,23 @@
     <title>Authorization</title>
     <link rel="stylesheet" href="styles/auth.css">
 </head>
-<body>
-    <div class="auth-form">
+<body class="no-margin">
+    <header class="navbar-fixed">
+        <div class="navbar-container">
+            <div class="navbar-logo">Ashana Hub</div>
+            <nav class="navbar-links">
+                <a href="main.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart</a>
+                <a href="auth.html">Login</a>
+                <a href="discounts.html">Discounts</a>
+                <a href="team.html">Team</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-form auth-form-offset">
         <h1>Login</h1>    
     <form>
         <div class="email-label">
@@ -35,18 +50,13 @@
             <button class="sign-in-button" type="submit">Sign in</button>
         </div>
         <div class="sign-up">
-            <p style="font-size: small;">Don't have an account?</p>
+            <p class="small-text">Don't have an account?</p>
             <a class="register-ref" href="">Sign up</a>
         </div>
     </form>
     </div>
 
 
-    <!--
-    <footer>
-        <p>Team: SocialNetwork</p>
-        <p>Members: Aldiyar, Aibek, Nurgeldi, Almadi</p>
-    </footer>
--->
+
 </body>
 </html>

@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+}
+.navbar-fixed {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(210,105,30,0.07);
+  margin-bottom: 32px;
+}
+.navbar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+}
+.navbar-logo {
+  font-size: 1.3em;
+  color: #d2691e;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.navbar-links {
+  display: flex;
+  gap: 28px;
+}
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1em;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar-links a:hover {
+  color: #d2691e;
+}
+body {
+  background-color: white;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.continue-shopping a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 14px;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid black;
+  margin: 20px 0;
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.cart-header p {
+  font-size: 16px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.cart-items {
+  flex: 2;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 6px 6px 0px black;
+}
+
+.cart-item img.product-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  border: 2px solid black;
+  margin-right: 15px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #444;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 15px;
+}
+
+.quantity button {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid black;
+  background: #FF5E5B;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quantity button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px black;
+}
+
+.count {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 15px;
+}
+
+.remove-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.remove-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.card-details {
+  flex: 1;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  background: #FFECEC;
+  box-shadow: 6px 6px 0px black;
+  height: fit-content;
+}
+
+.card-details h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-type {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+
+.card-type button {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px;
+  background: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-type button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px black;
+}
+
+.card-type img {
+  width: 40px;
+  height: auto;
+}
+
+.card-details label {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+}
+.card-details input {
+  width: 100%;
+  outline:none;
+
+  padding: 10px;
+  border: 2px solid black;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+input:focus{
+  box-shadow: 4px 4px 0px black;
+}
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  background: #FF5E5B;
+  border: 2px solid black;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.checkout-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px black;
+}
