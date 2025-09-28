@@ -13,23 +13,6 @@
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-=======
-#burgerimg {
-    height: 45px;
-    width: 40;
-}
-
-body {
-  background-color: var(--bg);
-  font-family: 'Courier New', monospace;
-  color: var(--text);
-  line-height: 1.6;
-  padding: 20px;
-}
-
->>>>>>> f3feeb56a6e276aba0e7a9550327998285d007da
-/* --- Навбар --- */
 nav {
   background: var(--bg);
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);

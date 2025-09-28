@@ -1,3 +1,130 @@
+.gallery-card {
+	position: relative;
+	overflow: hidden;
+	border-radius: 14px;
+	box-shadow: 6px 6px 0px var(--border);
+	padding: 22px 20px 18px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.2s, box-shadow 0.2s;
+	min-height: 420px;
+}
+
+.gallery-card img {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	border-radius: 10px;
+	margin-bottom: 12px;
+}
+
+.gallery-card .discount-badge {
+	position: absolute;
+	top: 18px;
+	left: 18px;
+	background: #d2691e;
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.1em;
+	padding: 7px 16px;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(210,105,30,0.13);
+	z-index: 2;
+}
+
+.gallery-card .meal-name {
+	font-size: 1.25em;
+	font-weight: 700;
+	color: #d2691e;
+	margin: 10px 0 6px 0;
+	text-align: center;
+}
+
+.gallery-card .meal-desc {
+	font-size: 1em;
+	color: #222;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.gallery-card .prices {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 8px;
+}
+
+.gallery-card .old-price {
+	color: #888;
+	text-decoration: line-through;
+	font-size: 1em;
+}
+
+.gallery-card .new-price {
+	color: #d2691e;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.gallery-card:hover {
+	transform: translateY(-6px) scale(1.03);
+	box-shadow: 0 8px 32px rgba(210,105,30,0.18);
+}
+/* Gallery Grid Styles */
+.gallery-container {
+	max-width: 1100px;
+	margin: 40px auto;
+	padding: 32px 28px 40px 28px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(210,105,30,0.10);
+}
+
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 24px;
+}
+
+.gallery-card {
+	position: relative;
+	overflow: hidden;
+	border-radius: 14px;
+	box-shadow: 0 4px 18px rgba(210,105,30,0.09);
+	background: #faf6f2;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-card img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	display: block;
+	border-radius: 14px;
+}
+
+.gallery-card .caption {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(210,105,30,0.85);
+	color: #fff;
+	font-size: 1.15em;
+	font-weight: 600;
+	text-align: center;
+	padding: 16px 0;
+	opacity: 0;
+	transition: opacity 0.3s;
+	pointer-events: none;
+}
+
+.gallery-card:hover .caption {
+	opacity: 1;
+}
 /* ID selector for top banner */
 #top-banner {
 	border: 3px solid #d2691e;
@@ -15,8 +142,11 @@
 /* Team page layout styles */
 .team-section {
 	max-width: 900px;
-	margin: 40px auto 0 auto;
-	padding: 0 20px 40px 20px;
+	margin: 40px auto;
+	padding: 32px 28px 40px 28px; /* Match main/cart/login padding */
+	background: #fff;
+	border-radius: 16px; /* Match main/cart/login border-radius */
+	box-shadow: 0 4px 24px rgba(210,105,30,0.10); /* Match main/cart/login shadow */
 }
 .team-title {
 	color: #d2691e;
@@ -25,15 +155,20 @@
 	font-weight: 700;
 	letter-spacing: 1px;
 }
-.member-block {
+.member-block.card {
+	/* Use main.css card style, override only layout */
 	display: flex;
 	align-items: center;
-	background: linear-gradient(90deg, #faf6f2 60%, #fff 100%);
-	border-radius: 18px;
-	box-shadow: 0 2px 12px rgba(210,105,30,0.07);
-	margin-bottom: 36px;
-	padding: 32px 32px 32px 0;
+	flex-direction: row;
+	justify-content: flex-start;
+	text-align: left;
+	margin: 18px 0;
+	padding: 22px 20px; /* Match main/cart/login card padding */
 	min-height: 180px;
+	background: #fff; /* Match main/cart/login card background */
+	border-radius: 14px; /* Match main/cart/login card radius */
+	box-shadow: 6px 6px 0px var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 .member-photo {
 	width: 120px;
@@ -85,23 +220,20 @@
 	font-size: 0.98em;
 }
 body {
-	font-family: Arial, sans-serif;
-	background: #f8f8f8;
+	font-family: 'Courier New', monospace;
+	background: #f5f3ef;
 	margin: 0;
 	padding: 0;
 }
-.discounts-container {
-	max-width: 1000px;
+/* Container style for discounts and team pages */
+.discounts-container,
+.team-section {
+	max-width: 900px;
 	margin: 40px auto;
-	padding: 20px;
+	padding: 32px 28px 40px 28px; /* Match main/cart/login padding */
 	background: #fff;
-	border-radius: 12px;
-	box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-}
-h1 {
-	text-align: center;
-	color: #d2691e;
-	margin-bottom: 32px;
+	border-radius: 16px; /* Match main/cart/login border-radius */
+	box-shadow: 0 4px 24px rgba(210,105,30,0.10); /* Match main/cart/login shadow */
 }
 .discount-list {
 	display: flex;
@@ -110,22 +242,23 @@ h1 {
 	justify-content: center;
 }
 .discount-card {
-	background: #faf6f2;
-	border-radius: 10px;
-	box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+	background: #fff; /* Match main/cart/login card background */
+	border-radius: 14px; /* Match main/cart/login card radius */
+	box-shadow: 6px 6px 0px var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
 	width: 290px;
-	padding: 18px 16px 20px 16px;
+	padding: 22px 20px; /* Match main/cart/login card padding */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	opacity: 0;
 	transform: translateY(30px) scale(0.97);
 	animation: cardFadeIn 0.7s cubic-bezier(.23,1.02,.47,.98) forwards;
-	transition: box-shadow 0.2s, transform 0.25s cubic-bezier(.23,1.02,.47,.98);
 }
-.discount-card:hover {
-	box-shadow: 0 8px 24px rgba(210,105,30,0.18);
-	transform: translateY(-6px) scale(1.03);
+.discount-card:hover,
+.member-block.card:hover {
+	transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px var(--border);
 }
 @keyframes cardFadeIn {
 	to {
@@ -176,17 +309,17 @@ h1 {
 .navbar {
 	width: 100%;
 	background: #fff;
-	box-shadow: 0 2px 8px rgba(210,105,30,0.07);
+	box-shadow: 0 2px 12px rgba(210,105,30,0.10); /* Match main/cart/login navbar shadow */
 	padding: 0;
 	margin-bottom: 32px;
 }
 .navbar-container {
-	max-width: 1000px;
+	max-width: 900px; /* Match container width */
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 20px;
+	padding: 0 28px;
 	height: 60px;
 }
 .navbar-logo {
