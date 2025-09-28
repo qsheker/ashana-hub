@@ -34,7 +34,7 @@ header {
 
 .navbar-container {
   display: flex;
-  justify-content: center; /* центрируем логотип + ссылки */
+  justify-content: center; 
   align-items: center;
   gap: 50px;
   flex-wrap: wrap;
@@ -62,7 +62,6 @@ header {
   color: var(--primary);
 }
 
-/* --- Заголовки --- */
 h1, h2 {
   font-family: 'Courier New', monospace;
   color: var(--text);
@@ -79,14 +78,12 @@ h2 {
   margin: 20px 0;
 }
 
-/* --- Секции --- */
 section {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* --- Карточки --- */
 .card, .food-item, .about-card, .review-card {
   background: var(--bg);
   border: 2px solid var(--border);
@@ -97,7 +94,7 @@ section {
   transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
   display: flex;
-  flex-direction: column; /* Flexbox для карточек */
+  flex-direction: column;
   align-items: center;
 }
 
@@ -112,36 +109,33 @@ section {
   margin-bottom: 10px;
 }
 
-/* --- Текст в карточках --- */
 .food-item p, .about-card p, .review-card p {
   font-size: 0.95rem;
   margin-bottom: 12px;
 }
 
-/* --- Автор отзывов --- */
 .review-author {
   font-weight: bold;
   font-size: 0.9rem;
   color: var(--text);
 }
 
-/* --- Кнопки --- */
 button {
-  background: var(--primary);      /* основной цвет */
-  color: var(--bg);                /* текст */
-  padding: 12px 26px;              /* увеличенный padding */
-  border: none;                    /* убрали рамку */
-  border-radius: 10px;             /* более мягкие углы */
-  font-size: 16px;                 /* чуть крупнее текст */
+  background: var(--primary);    
+  color: var(--bg);               
+  padding: 12px 26px;             
+  border: none;                   
+  border-radius: 10px;            
+  font-size: 16px;                
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;       /* плавные эффекты */
+  transition: all 0.3s ease;   
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 button:hover {
-  background: #ff3b3b;             /* чуть темнее при наведении */
-  transform: translateY(-3px);     /* эффект поднятия */
+  background: #ff3b3b;           
+  transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
