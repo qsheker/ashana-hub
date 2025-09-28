@@ -1,10 +1,10 @@
+/* --- Cherry-Cart Minimal Style for AsxanaHub --- */
+
 :root {
-  --cherry-dark: #8a0030;
-  --cherry: #CC0033;
-  --cherry-light: #E34262;
-  --cherry-bg: #F7E9E3;
-  --cherry-text: #2B0A0A;
-  --white: #fff;
+  --primary: #FF5E5B; /* акцентный цвет */
+  --border: #000;     /* чёрные границы */
+  --bg: #fff;         /* фон */
+  --text: #222;       /* текст */
 }
 
 * {
@@ -14,41 +14,18 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--cherry-bg);
-  color: var(--cherry-text);
+  background-color: var(--bg);
+  font-family: 'Courier New', monospace;
+  color: var(--text);
   line-height: 1.6;
+  padding: 20px;
 }
 
-.site-header {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--white);
-  position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-.site-header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(131, 22, 53, 0.8);
-}
-
-.site-header h1 {
-  position: relative;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  z-index: 1;
-}
-
+/* --- Навбар --- */
 nav {
-  text-align: center;
-  background: var(--cherry-light);
+  background: var(--bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-bottom: 32px;
   padding: 10px 0;
 }
 
@@ -60,92 +37,119 @@ nav ul {
 }
 
 nav a {
-  color: var(--white);
-  font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s, transform 0.2s;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 nav a:hover {
-  color: var(--cherry-dark);
-  transform: scale(1.05);
+  color: var(--primary);
 }
 
-nav a.active {
-  border-bottom: 2px solid var(--white);
+/* --- Заголовки --- */
+h1, h2 {
+  font-family: 'Courier New', monospace;
+  color: var(--text);
+  text-align: center;
 }
 
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 20px 0;
+}
+
+/* --- Секции --- */
 section {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem;
-  color: var(--cherry-dark);
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-p {
-  margin-bottom: 15px;
-}
-
-.card, .food-item {
-  background: var(--white);
-  border: 1px solid #f1c5ce;
-  border-radius: 14px;
-  padding: 22px;
+/* --- Карточки --- */
+.card, .food-item, .about-card, .review-card {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
   margin: 15px 0;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 6px 6px 0px var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
 }
 
-.card:hover, .food-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+.card:hover, .food-item:hover, .about-card:hover, .review-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px var(--border);
 }
 
-.food-item h3 {
-  color: var(--cherry);
+.food-item h3, .about-card h3, .review-card h3 {
+  color: var(--primary);
+  font-size: 1.2rem;
   margin-bottom: 10px;
-  font-family: 'Montserrat', sans-serif;
 }
 
+/* --- Текст в карточках --- */
+.food-item p, .about-card p, .review-card p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* --- Автор отзывов --- */
+.review-author {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+/* --- Кнопки --- */
 button {
-  background: var(--cherry);
-  color: var(--white);
+  background: var(--primary);
+  color: var(--bg);
   padding: 10px 22px;
-  border: none;
-  border-radius: 10px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-  background: var(--cherry-dark);
-  transform: scale(1.07);
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0px var(--border);
 }
 
+/* --- Сетки карточек для About и Reviews --- */
+.about-container, .reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* --- Футер --- */
 footer {
-  background: var(--cherry-dark);
-  color: var(--white);
+  background: var(--bg);
+  color: var(--text);
   text-align: center;
   padding: 15px 10px;
   font-size: 14px;
+  border-top: 2px solid var(--border);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 a:hover {
-  color: var(--cherry-dark);
+  color: var(--primary);
 }
