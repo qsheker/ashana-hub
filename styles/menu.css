@@ -258,7 +258,7 @@ a:hover {
 
   .card, .food-item, .about-card, .review-card {
     padding: 20px;
-    margin: 15px 0;
+    margin: 40px;
     box-shadow: 5px 5px 0px var(--border);
   }
 
@@ -329,7 +329,6 @@ a:hover {
 
   .card, .food-item, .about-card, .review-card {
     padding: 25px;
-    margin: 40px;
     box-shadow: 6px 6px 0px var(--border);
   }
 
