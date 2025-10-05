@@ -18,7 +18,7 @@
     .custom-primary { 
       background-color: var(--primary) !important; 
       border-color: var(--primary) !important; 
-      color: white !important;
+      color: rgb(228, 228, 228) !important;
     }
     
     .custom-primary:hover { 
@@ -65,11 +65,79 @@
       box-shadow: 4px 4px 0px var(--border);
       color: var(--bg);
     }
+    @media (max-width: 992px) {
+  h2 {
+    font-size: 2rem; /* уменьшить заголовок */
+  }
+
+  .custom-card {
+    box-shadow: 4px 4px 0px var(--border) !important;
+  }
+
+  .custom-btn {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+  }
+
+  nav.navbar {
+    text-align: center;
+  }
+
+  .navbar-nav {
+    margin-top: 10px;
+  }
+}
+
+/* --- Для телефонов (до 768px) --- */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .custom-card {
+    border-width: 1.5px;
+    padding: 12px;
+  }
+
+  .custom-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+  }
+}
+
+/* --- Для очень маленьких экранов (до 480px) --- */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .custom-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .custom-card {
+    box-shadow: 3px 3px 0px var(--border) !important;
+  }
+
+  nav .navbar-brand {
+    font-size: 1.2rem;
+  }
+}
   </style>
 </head>
 <body>
   <!-- Bootstrap Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--text);">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#edbbba;">
     <div class="container">
       <a class="navbar-brand fw-bold" href="main.html" style="color: var(--primary);">AsxanaHub</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
