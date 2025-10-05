@@ -181,6 +181,9 @@ button:hover {
 footer {
   background: var(--bg);
   color: var(--text);
+  position: sticky;
+  bottom: 0;
+  width: 100%;
   text-align: center;
   padding: 15px 10px;
   font-size: 14px;
