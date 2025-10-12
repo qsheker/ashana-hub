@@ -1,3 +1,10 @@
+/* Popup overlay show class for visibility */
+.popup-overlay {
+  display: none;
+}
+.popup-overlay.show {
+  display: flex !important;
+}
 /* Ashana Hub Modern Unified Theme */
 :root {
   --primary: #ff5e5b;
