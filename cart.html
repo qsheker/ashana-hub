@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/theme.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | Ashana Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/theme.css" />
 </head>
 <body>
   <header>
@@ -22,95 +22,89 @@
       </nav>
     </div>
   </header>
+
   <main class="container">
-    <div class="card">
-      <a href="menu.html" style="text-decoration:none;color:var(--primary);font-weight:500;">← Continue Shopping</a>
-    </div>
     <section class="card">
       <h1>Shopping Cart</h1>
-      <p>You have <span id="cart-count">2</span> items in your cart</p>
+      <p>You have <span id="cart-count">3</span> items in your cart</p>
+
       <div class="cart-items">
         <div class="cart-item">
-          <img src="images/Rectangle 19.png" alt="Product image" class="product-img">
+          <img src="images/pizza.jpg" alt="Italy Pizza" class="product-img" />
           <div class="product-info">
-            <h2 class="product-title">Italy Pizza</h2>
-            <p class="product-desc">Extra cheese and topping</p>
+            <h2>Italy Pizza</h2>
+            <p>Extra cheese and topping</p>
           </div>
           <div class="quantity">
-            <button class="decrease">-</button>
+            <button class="decrease">−</button>
             <span class="count">1</span>
             <button class="increase">+</button>
           </div>
-          <p class="product-price">$20.00</p>
-          <button class="remove-btn">
-            <img src="images/Trash Can.png" alt="Remove"> 
-          </button>
+          <p class="product-price">$5.00</p>
+          <button class="remove-btn">🗑</button>
         </div>
+
         <div class="cart-item">
-          <img src="images/burger.jpg" alt="Product image" class="product-img">
+          <img src="images/burger.jpg" alt="Cheese Burger" class="product-img" />
           <div class="product-info">
-            <h2 class="product-title">Cheese Burger</h2>
-            <p class="product-desc">With fries & sauce</p>
+            <h2>Cheese Burger</h2>
+            <p>With fries</p>
           </div>
           <div class="quantity">
-            <button class="decrease">-</button>
+            <button class="decrease">−</button>
             <span class="count">2</span>
             <button class="increase">+</button>
           </div>
-          <p class="product-price">$15.00</p>
-          <button class="remove-btn">
-            <img src="images/Trash Can.png" alt="Remove"> 
-          </button>
+          <p class="product-price">$3.00</p>
+          <button class="remove-btn">🗑</button>
         </div>
+
         <div class="cart-item">
-          <img src="images/fries.jpg" alt="Product image" class="product-img">
+          <img src="images/fries.jpg" alt="Fries" class="product-img" />
           <div class="product-info">
-            <h2 class="product-title">Fries</h2>
-            <p class="product-desc">Fries only with salt</p>
+            <h2>Fries</h2>
+            <p>Extra crispy with salt</p>
           </div>
           <div class="quantity">
-            <button class="decrease">-</button>
+            <button class="decrease">−</button>
             <span class="count">1</span>
             <button class="increase">+</button>
           </div>
-          <p class="product-price">$3.00</p>
-          <button class="remove-btn">
-            <img src="images/Trash Can.png" alt="Remove"> 
-          </button>
+          <p class="product-price">$2.00</p>
+          <button class="remove-btn">🗑</button>
         </div>
       </div>
     </section>
+
     <section class="card">
       <h2>Card Details</h2>
-      <p>Card type</p>
-      <div class="card-type">
-        <button><img src="images/visa.png" alt="Visa"></button>
-        <button><img src="images/Rupay.png" alt="Rupay"></button>
-        <button><img src="images/MasterCard.png" alt="MasterCard"></button>
-      </div>
-      <form>
+      <form id="checkout-form">
         <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Name">
+        <input id="name" type="text" placeholder="John Doe" required />
+
         <label for="card-number">Card Number</label>
-        <input id="card-number" type="text" placeholder="1111 2222 3333 4444">
-        <div style="display:flex;gap:12px;">
-          <div style="flex:1;">
-            <label for="date">Expiration date</label>
-            <input id="date" type="text" placeholder="mm/yy">
+        <input id="card-number" type="text" placeholder="1234 5678 9012 3456" required />
+
+        <div style="display: flex; gap: 12px;">
+          <div style="flex: 1;">
+            <label for="date">Expiration Date</label>
+            <input id="date" type="text" placeholder="MM/YY" required />
           </div>
-          <div style="flex:1;">
+          <div style="flex: 1;">
             <label for="cvv">CVV</label>
-            <input id="cvv" type="text" placeholder="123">
+            <input id="cvv" type="text" placeholder="123" required />
           </div>
         </div>
-        <hr>
+
         <button type="submit">Checkout</button>
       </form>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2025 Asxana.hub. All rights reserved.</p>
+    <p>© 2025 Ashana Hub. All rights reserved.</p>
   </footer>
+
+  <script src="scripts/cart.js"></script>
 </body>
 </html>
