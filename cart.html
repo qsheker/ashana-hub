@@ -4,157 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
-  <link rel="stylesheet" href="styles/cart.css">
-  <style>
-  .layout {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 200px 1fr;
-    grid-template-areas:"header header" "sidebar main" "footer footer";
-    min-height: 100vh;
-  }
-  .header { 
-    grid-area: header; 
-  }
-  .sidebar {
-    grid-area: sidebar;
-    background:#f0f0f0;
-    padding:20px;
-  }
-  .main {
-    grid-area: main;
-    padding:20px;
-  }
-  .footer {
-    grid-area: footer;
-    background:#222;
-    color:#fff;
-    text-align:center;
-    padding:10px;
-  }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
-  <nav class="navbar-fixed">
+  <header>
     <div class="navbar-container">
       <div class="navbar-logo">Ashana Hub</div>
-      <div class="navbar-links">
+      <nav class="navbar-links">
         <a href="main.html">Home</a>
         <a href="menu.html">Menu</a>
-        <a href="cart.html">Cart</a>
+        <a href="cart.html" class="active">Cart</a>
         <a href="auth.html">Login</a>
         <a href="discounts.html">Discounts</a>
         <a href="team.html">Team</a>
         <a href="profile.html">Profile</a>
-      </div>
+      </nav>
     </div>
-  </nav>
-  <div class="continue-shopping">
-    <a href="">
-      <img src="images/arrow.png" alt="Back arrow">
-      Continue Shopping
-    </a>
-  </div>
-
-  <hr class="divider">
-
-  <header class="cart-header">
-    <h1>Shopping Cart</h1>
-    <p>You have <span id="cart-count">2</span> items in your cart</p>
   </header>
-
-  <div class="cart-container">
-
-    <div class="cart-items">
-      <div class="cart-item">
-        <img src="images/Rectangle 19.png" alt="Product image" class="product-img">
-        <div class="product-info">
-          <h2 class="product-title">Italy Pizza</h2>
-          <p class="product-desc">Extra cheese and toping</p>
-        </div>
-        <div class="quantity">
-          <button class="decrease">-</button>
-          <span class="count">1</span>
-          <button class="increase">+</button>
-        </div>
-        <p class="product-price">$20.00</p>
-        <button class="remove-btn">
-          <img src="images/Trash Can.png" alt="Remove"> 
-        </button>
-      </div>
-      <div class="cart-item">
-        <img src="images/burger.jpg" alt="Product image" class="product-img">
-        <div class="product-info">
-          <h2 class="product-title">Cheese Burger</h2>
-          <p class="product-desc">With fries & sauce</p>
-        </div>
-        <div class="quantity">
-          <button class="decrease">-</button>
-          <span class="count">2</span>
-          <button class="increase">+</button>
-        </div>
-        <p class="product-price">$15.00</p>
-        <button class="remove-btn">
-          <img src="images/Trash Can.png" alt="Remove"> 
-        </button>
-      </div>
-      <div class="cart-item">
-        <img src="images/fries.jpg" alt="Product image" class="product-img">
-        <div class="product-info">
-          <h2 class="product-title">Fries</h2>
-          <p class="product-desc">Fries only with salt</p>
-        </div>
-        <div class="quantity">
-          <button class="decrease">-</button>
-          <span class="count">1</span>
-          <button class="increase">+</button>
-        </div>
-        <p class="product-price">$3.00</p>
-        <button class="remove-btn">
-          <img src="images/Trash Can.png" alt="Remove"> 
-        </button>
-      </div>
+  <main class="container">
+    <div class="card">
+      <a href="menu.html" style="text-decoration:none;color:var(--primary);font-weight:500;">← Continue Shopping</a>
     </div>
-
-    <div class="card-details">
+    <section class="card">
+      <h1>Shopping Cart</h1>
+      <p>You have <span id="cart-count">2</span> items in your cart</p>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="images/Rectangle 19.png" alt="Product image" class="product-img">
+          <div class="product-info">
+            <h2 class="product-title">Italy Pizza</h2>
+            <p class="product-desc">Extra cheese and topping</p>
+          </div>
+          <div class="quantity">
+            <button class="decrease">-</button>
+            <span class="count">1</span>
+            <button class="increase">+</button>
+          </div>
+          <p class="product-price">$20.00</p>
+          <button class="remove-btn">
+            <img src="images/Trash Can.png" alt="Remove"> 
+          </button>
+        </div>
+        <div class="cart-item">
+          <img src="images/burger.jpg" alt="Product image" class="product-img">
+          <div class="product-info">
+            <h2 class="product-title">Cheese Burger</h2>
+            <p class="product-desc">With fries & sauce</p>
+          </div>
+          <div class="quantity">
+            <button class="decrease">-</button>
+            <span class="count">2</span>
+            <button class="increase">+</button>
+          </div>
+          <p class="product-price">$15.00</p>
+          <button class="remove-btn">
+            <img src="images/Trash Can.png" alt="Remove"> 
+          </button>
+        </div>
+        <div class="cart-item">
+          <img src="images/fries.jpg" alt="Product image" class="product-img">
+          <div class="product-info">
+            <h2 class="product-title">Fries</h2>
+            <p class="product-desc">Fries only with salt</p>
+          </div>
+          <div class="quantity">
+            <button class="decrease">-</button>
+            <span class="count">1</span>
+            <button class="increase">+</button>
+          </div>
+          <p class="product-price">$3.00</p>
+          <button class="remove-btn">
+            <img src="images/Trash Can.png" alt="Remove"> 
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="card">
       <h2>Card Details</h2>
       <p>Card type</p>
-
       <div class="card-type">
         <button><img src="images/visa.png" alt="Visa"></button>
         <button><img src="images/Rupay.png" alt="Rupay"></button>
         <button><img src="images/MasterCard.png" alt="MasterCard"></button>
       </div>
-
       <form>
         <label for="name">Name</label>
-        <br>
         <input id="name" type="text" placeholder="Name">
-        
-        <br>
-
         <label for="card-number">Card Number</label>
-        <br>
         <input id="card-number" type="text" placeholder="1111 2222 3333 4444">
-
-        <div class="form-row">
-          <div class="exp-date">
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;">
             <label for="date">Expiration date</label>
-            <br>
             <input id="date" type="text" placeholder="mm/yy">
           </div>
-          <div class="cvv-number">
+          <div style="flex:1;">
             <label for="cvv">CVV</label>
-            <br>
             <input id="cvv" type="text" placeholder="123">
           </div>
         </div>
-
         <hr>
-        <button type="submit" class="checkout-btn">Checkout</button>
+        <button type="submit">Checkout</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Asxana.hub. All rights reserved.</p>
+  </footer>
 </body>
 </html>

@@ -4,23 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ashana Hub — Profile</title>
-  <link rel="stylesheet" href="styles/profile.css">
+  <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="container">
-    <div class="brand">Ashana Hub</div>
-    <nav>
-      <ul class="nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="auth.html">Login</a></li>
-        <li><a href="discounts.html">Discounts</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a id="profile-link" class="active" href="profile.html">Profile</a></li>
-      </ul>
+<header>
+  <div class="navbar-container">
+    <div class="navbar-logo">Ashana Hub</div>
+    <nav class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="cart.html">Cart</a>
+      <a href="auth.html">Login</a>
+      <a href="discounts.html">Discounts</a>
+      <a href="team.html">Team</a>
+      <a href="profile.html" class="active">Profile</a>
     </nav>
   </div>
 </header>
@@ -31,7 +29,7 @@
 
   <section id="user-card" class="card">
     <h2>My Info</h2>
-    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
       <img class="avatar" src="" alt="">
       <div>
         <p><strong>Name:</strong> Name</p>
@@ -48,32 +46,25 @@
       <input id="username" type="text" placeholder="Your username">
 
       <label for="phone">Phone</label>
-      <input id="phone" type="tel" placeholder="+7 700 000 00 00">
+      <input id="phone" type="tel" placeholder="Your phone number">
 
-      <label for="address">Delivery Address</label>
-      <textarea id="address" rows="3" placeholder="Street, building, apartment"></textarea>
+      <label for="bio">Bio</label>
+      <textarea id="bio" placeholder="Tell us about yourself"></textarea>
 
-      <div style="margin-top:10px">
-        <button class="btn" type="submit">Save changes</button>
-        <button class="btn secondary" type="button">Logout</button>
-      </div>
+      <button type="submit">Save Changes</button>
+      <button class="btn secondary" type="button">Logout</button>
     </form>
   </section>
+
   <section class="card">
     <h2>Order History</h2>
     <table>
       <thead>
-        <tr>
-          <th>#</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th>
-        </tr>
+        <tr><th>Date</th><th>Order</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td>10021</td><td>2025-09-10</td><td>Lagman, Tea</td><td>2,300 ₸</td><td>Delivered</td>
-        </tr>
-        <tr>
-          <td>10022</td><td>2025-09-18</td><td>Plov, Salad</td><td>3,100 ₸</td><td>Processing</td>
-        </tr>
+        <tr><td>2025-10-01</td><td>Donerhub</td><td>Delivered</td></tr>
+        <tr><td>2025-09-28</td><td>Vibeshake</td><td>Delivered</td></tr>
       </tbody>
     </table>
   </section>

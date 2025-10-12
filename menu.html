@@ -4,71 +4,63 @@
   <meta charset="UTF-8">
   <title>Menu - Asxana.hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>AsxanaHub<sup><img id="burgerimg" src="image/asxanaburger.png"></sup></h1>
+  <header>
+    <div class="navbar-container">
+      <div class="navbar-logo">AsxanaHub</div>
+      <nav class="navbar-links">
+        <a href="main.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="cart.html">Cart</a>
+        <a href="auth.html">Login</a>
+        <a href="discounts.html">Discounts</a>
+        <a href="team.html">Team</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="main.html">Home</a></li>
-      <li><a href="menu.html" class="active">Menu</a></li>
-      <li><a href="cart.html">Cart</a></li>
-      <li><a href="auth.html">Login</a></li>
-      <li><a href="discounts.html">Discounts</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="profile.html">Profile</a></li>
-    </ul>
-  </nav>
-
-  <section id="menu">
-    <h2>Food - Menu</h2>
-    <div class="food-list">
-
-      <div class="food-item">
-        <h3>Donerhub - <i>3.99$</i></h3>
-        <p>Juicy doner with our special cherry sauce.</p>
-        <button>Order Now</button>
+  <main class="container">
+    <section id="menu" class="card">
+      <h2>Food - Menu</h2>
+      <div class="food-list">
+        <div class="food-item">
+          <h3>Donerhub <span style="font-weight:400">- <i>3.99$</i></span></h3>
+          <p>Juicy doner with our special cherry sauce.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>Vibeshake <span style="font-weight:400">- <i>2.65$</i></span></h3>
+          <p>Refreshing milkshake that matches your vibe.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>MVP-Burger <span style="font-weight:400">- <i>5.20$</i></span></h3>
+          <p>Your first bite to success — soft bun, fresh veggies, and premium beef.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>Startup Fries <span style="font-weight:400">- <i>2.99$</i></span></h3>
+          <p>Crispy golden fries — the sidekick to every big idea.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>Cherry Cheesecake <span style="font-weight:400">- <i>4.50$</i></span></h3>
+          <p>Creamy cheesecake with a cherry topping, perfect for sweet lovers.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>CodeCoffee <span style="font-weight:400">- <i>1.99$</i></span></h3>
+          <p>Strong coffee to fuel your coding sessions — hot and energizing.</p>
+          <button>Order Now</button>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div class="food-item">
-        <h3>Vibeshake - <i>2.65$</i></h3>
-        <p>Refreshing milkshake that matches your vibe.</p>
-        <button>Order Now</button>
-      </div>
-
-      <div class="food-item">
-        <h3>MVP-Burger - <i>5.20$</i></h3>
-        <p>Your first bite to success — soft bun, fresh veggies, and premium beef.</p>
-        <button>Order Now</button>
-      </div>
-
-      <div class="food-item">
-        <h3>Startup Fries - <i>2.99$</i></h3>
-        <p>Crispy golden fries — the sidekick to every big idea.</p>
-        <button>Order Now</button>
-      </div>
-
-      <!-- Новая карточка -->
-      <div class="food-item">
-        <h3>Cherry Cheesecake - <i>4.50$</i></h3>
-        <p>Creamy cheesecake with a cherry topping, perfect for sweet lovers.</p>
-        <button>Order Now</button>
-      </div>
-
-      <!-- Новая карточка -->
-      <div class="food-item">
-        <h3>CodeCoffee - <i>1.99$</i></h3>
-        <p>Strong coffee to fuel your coding sessions — hot and energizing.</p>
-        <button>Order Now</button>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
+  <footer class="footer">
     <p>© 2025 Asxana.hub. All rights reserved.</p>
   </footer>
 </body>

@@ -4,57 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authorization</title>
-    <link rel="stylesheet" href="styles/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body class="no-margin">
-    <header class="navbar-fixed">
-        <div class="navbar-container">
-            <div class="navbar-logo">Ashana Hub</div>
-            <nav class="navbar-links">
-                <a href="main.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="cart.html">Cart</a>
-                <a href="auth.html">Login</a>
-                <a href="discounts.html">Discounts</a>
-                <a href="team.html">Team</a>
-                <a href="profile.html">Profile</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="auth-form auth-form-offset">
-        <h1>Login</h1>    
-    <form>
-        <div class="email-label">
-            <label for="Email">Email</label>
-            <br>
-            <input type="email" name="email" id="Email" placeholder="Enter your email">
-        </div>
-
-        <div class="password-label">
-            <label for="Password">Password</label>
-            <br>
-            <input type="password" name="password" id="Password" placeholder="Enter your password">
-        </div>
-
-        <div class="auth-option">
-            <div class="remember">
-                <input type="checkbox" id="Remember">
-                <label for="Remember">Remember me</label>
+        <header>
+            <div class="navbar-container">
+                <div class="navbar-logo">Ashana Hub</div>
+                <nav class="navbar-links">
+                    <a href="main.html">Home</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="auth.html" class="active">Login</a>
+                    <a href="discounts.html">Discounts</a>
+                    <a href="team.html">Team</a>
+                    <a href="profile.html">Profile</a>
+                </nav>
             </div>
-            <a href="">Forgot password</a>
-        </div>
+        </header>
 
+        <main class="container">
+            <section class="card" style="max-width:400px;margin:40px auto;">
+                <h1>Login</h1>
+                <form>
+                    <label for="Email">Email</label>
+                    <input type="email" name="email" id="Email" placeholder="Enter your email">
 
-        <div class="sign-in">
-            <button class="sign-in-button" type="submit">Sign in</button>
-        </div>
-        <div class="sign-up">
-            <p class="small-text">Don't have an account?</p>
-            <a class="register-ref" href="">Sign up</a>
-        </div>
-    </form>
-    </div>
+                    <label for="Password">Password</label>
+                    <input type="password" name="password" id="Password" placeholder="Enter your password">
+
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                        <div>
+                            <input type="checkbox" id="Remember">
+                            <label for="Remember">Remember me</label>
+                        </div>
+                        <a href="" style="font-size:0.95em;">Forgot password?</a>
+                    </div>
+
+                    <button type="submit">Sign in</button>
+                    <div style="margin-top:18px;text-align:center;">
+                        <span style="font-size:0.97em;">Don't have an account?</span>
+                        <a href="" style="margin-left:6px;">Sign up</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 Asxana.hub. All rights reserved.</p>
+        </footer>
 
 
 
