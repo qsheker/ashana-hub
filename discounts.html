@@ -1,100 +1,148 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Meal Discounts</title>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="styles/theme.css">
-		
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<style>
+		:root {
+			--primary: #FF5E5B;
+			--border: #000;
+			--bg: #fff;
+			--text: #222;
+		}
+
+		body {
+			font-family: 'Courier New', monospace;
+			background-color: var(--bg);
+			color: var(--text);
+		}
+	</style>
 </head>
 <body>
-	<header>
-		<div class="navbar-container">
-			<div class="navbar-logo">Ashana Hub</div>
-			<nav class="navbar-links">
-				<a href="index.html">Home</a>
-				<a href="menu.html">Menu</a>
-				<a href="cart.html">Cart</a>
-				<a href="auth.html">Login</a>
-				<a href="discounts.html" class="active">Discounts</a>
-				<a href="team.html">Team</a>
-				<a href="profile.html">Profile</a>
-			</nav>
-		</div>
-	</header>
-		<main class="container">
-			<section class="card">
-				<h1>Special Meal Discounts</h1>
-				<div class="discount-list">
-					<div class="discount-card">
-						<img src="images/pasta-with-chicken.jpeg" alt="Pasta with Chicken">
-						<div class="discount-badge">-25%</div>
-						<div class="meal-name">Pasta with Chicken</div>
-						<div class="meal-desc">Creamy pasta tossed with grilled chicken, mushrooms, and parmesan.</div>
-						<div class="prices">
-							<span class="old-price">650₸</span>
-							<span class="new-price">490₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/ashana-burger.jpg" alt="Ashana Burger">
-						<div class="discount-badge">-20%</div>
-						<div class="meal-name">Ashana Burger</div>
-						<div class="meal-desc">Juicy beef patty, fresh veggies, and Ashana's special sauce in a soft bun.</div>
-						<div class="prices">
-							<span class="old-price">1200₸</span>
-							<span class="new-price">960₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/kyurdak.jpeg" alt="Kyurdak">
-						<div class="discount-badge">-30%</div>
-						<div class="meal-name">Kyurdak</div>
-						<div class="meal-desc">Traditional Central Asian dish with tender lamb, potatoes, and onions.</div>
-						<div class="prices">
-							<span class="old-price">1500₸</span>
-							<span class="new-price">1050₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/chicken-caesar-salad.jpeg" alt="Chicken Caesar Salad">
-						<div class="discount-badge">-15%</div>
-						<div class="meal-name">Chicken Caesar Salad</div>
-						<div class="meal-desc">Crisp romaine, grilled chicken, croutons, and creamy Caesar dressing.</div>
-						<div class="prices">
-							<span class="old-price">900₸</span>
-							<span class="new-price">765₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/cheese-pizza.png" alt="Cheese Pizza">
-						<div class="discount-badge">-18%</div>
-						<div class="meal-name">Cheese Pizza</div>
-						<div class="meal-desc">Classic pizza with mozzarella, cheddar, and tomato sauce.</div>
-						<div class="prices">
-							<span class="old-price">1100₸</span>
-							<span class="new-price">902₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/lagman.jpeg" alt="Lagman">
-						<div class="discount-badge">-22%</div>
-						<div class="meal-name">Lagman</div>
-						<div class="meal-desc">Hand-pulled noodles with beef, vegetables, and savory broth.</div>
-						<div class="prices">
-							<span class="old-price">1300₸</span>
-							<span class="new-price">1014₸</span>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
-</body>
-</html>
-	<footer class="footer">
-		<p>© 2025 Asxana.hub. All rights reserved.</p>
-	</footer>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+	const cards = document.querySelectorAll('.discount-card');
+	cards.forEach((card, i) => {
+		card.style.animationDelay = (i * 0.12) + 's';
+	});
+});
+</script>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Ashana Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="auth.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="discounts.html">Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="container mt-5">
+        <h1 class="text-center mb-4">Special Meal Discounts</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/pasta-with-chicken.jpeg" class="card-img-top" alt="Pasta with Chicken">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Pasta with Chicken</h5>
+                        <p class="card-text">Creamy pasta tossed with grilled chicken, mushrooms, and parmesan.</p>
+                        <p class="text-muted"><del>650₸</del> <span class="text-danger fw-bold">490₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/ashana-burger.jpg" class="card-img-top" alt="Ashana Burger">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Ashana Burger</h5>
+                        <p class="card-text">Juicy beef patty, fresh veggies, and Ashana's special sauce in a soft bun.</p>
+                        <p class="text-muted"><del>1200₸</del> <span class="text-danger fw-bold">960₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/kyurdak.jpeg" class="card-img-top" alt="Kyurdak">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Kyurdak</h5>
+                        <p class="card-text">Traditional Central Asian dish with tender lamb, potatoes, and onions.</p>
+                        <p class="text-muted"><del>1500₸</del> <span class="text-danger fw-bold">1050₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/chicken-caesar-salad.jpeg" class="card-img-top" alt="Chicken Caesar Salad">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Chicken Caesar Salad</h5>
+                        <p class="card-text">Crisp romaine, grilled chicken, croutons, and creamy Caesar dressing.</p>
+                        <p class="text-muted"><del>900₸</del> <span class="text-danger fw-bold">765₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/cheese-pizza.png" class="card-img-top" alt="Cheese Pizza">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Cheese Pizza</h5>
+                        <p class="card-text">Classic pizza with mozzarella, cheddar, and tomato sauce.</p>
+                        <p class="text-muted"><del>1100₸</del> <span class="text-danger fw-bold">902₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/lagman.jpeg" class="card-img-top" alt="Lagman">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Lagman</h5>
+                        <p class="card-text">Hand-pulled noodles with beef, vegetables, and savory broth.</p>
+                        <p class="text-muted"><del>1300₸</del> <span class="text-danger fw-bold">1014₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/fries.jpg" class="card-img-top" alt="Fries">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Fries</h5>
+                        <p class="card-text">Golden crispy fries, lightly salted.</p>
+                        <p class="text-muted"><del>400₸</del> <span class="text-danger fw-bold">360₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/burger.png" class="card-img-top" alt="Burger">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Burger</h5>
+                        <p class="card-text">Classic burger with beef patty, lettuce, and tomato.</p>
+                        <p class="text-muted"><del>1000₸</del> <span class="text-danger fw-bold">880₸</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 border border-dark shadow">
+                    <img src="images/lagman2.jpg" class="card-img-top" alt="Chef's Lagman">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Chef's Lagman</h5>
+                        <p class="card-text">Lagman with extra vegetables and herbs.</p>
+                        <p class="text-muted"><del>1350₸</del> <span class="text-danger fw-bold">1161₸</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
