@@ -210,4 +210,10 @@ button:hover, .btn:hover, .sign-in-button:hover {
   .card, .about-card, .food-item, .discount-card, .member-block {
     padding: 12px;
   }
+
+  #clock {
+    display: none;
+  }
 }
+
+
