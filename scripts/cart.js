@@ -1,27 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
 
-  document.querySelectorAll('.increase').forEach(button => {
+
+  document.querySelectorAll('.cart-plus').forEach(button => {
     button.addEventListener('click', () => {
-      const countSpan = button.previousElementSibling;
-      let count = parseInt(countSpan.textContent);
-      countSpan.textContent = count + 1;
+      const qtySpan = button.previousElementSibling;
+      let qty = parseInt(qtySpan.textContent);
+      qtySpan.textContent = qty + 1;
       updateCartCount();
     });
   });
 
-  document.querySelectorAll('.decrease').forEach(button => {
+  document.querySelectorAll('.cart-minus').forEach(button => {
     button.addEventListener('click', () => {
-      const countSpan = button.nextElementSibling;
-      let count = parseInt(countSpan.textContent);
-      if (count > 1) {
-        countSpan.textContent = count - 1;
+      const qtySpan = button.nextElementSibling;
+      let qty = parseInt(qtySpan.textContent);
+      if (qty > 1) {
+        qtySpan.textContent = qty - 1;
         updateCartCount();
       }
     });
   });
 
-  document.querySelectorAll('.remove-btn').forEach(button => {
+  document.querySelectorAll('.cart-remove').forEach(button => {
     button.addEventListener('click', () => {
       const item = button.closest('.cart-item');
       item.remove();

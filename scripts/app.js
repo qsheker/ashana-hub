@@ -75,18 +75,35 @@ document.getElementById('settingsForm')?.addEventListener('submit', (e) => {
 
   let valid = true;
 
+  // Remove all previous error states
   [username, phone, address, email, pass, confirm].forEach(el => {
-    if (!el.value.trim()) {
-      el.classList.add('is-invalid');
-      valid = false;
-    } else {
-      el.classList.remove('is-invalid');
-    }
+    el.classList.remove('is-invalid');
   });
 
-  if (!/\S+@\S+\.\S+/.test(email.value)) { email.classList.add('is-invalid'); valid = false; }
-  if (pass.value.length < 8) { pass.classList.add('is-invalid'); valid = false; }
-  if (pass.value !== confirm.value) { confirm.classList.add('is-invalid'); valid = false; }
+  if (!username.value.trim()) {
+    username.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!phone.value.trim()) {
+    phone.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!address.value.trim()) {
+    address.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!email.value.trim() || !/\S+@\S+\.\S+/.test(email.value)) {
+    email.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!pass.value.trim() || pass.value.length < 8) {
+    pass.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!confirm.value.trim() || pass.value !== confirm.value) {
+    confirm.classList.add('is-invalid');
+    valid = false;
+  }
 
   if (valid) {
     alert('Profile saved successfully!');

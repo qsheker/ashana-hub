@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | Ashana Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/theme.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body class="no-margin">
-  <header>
-    <div class="navbar-container">
-      <div class="navbar-logo">Ashana Hub</div>
-      <nav class="navbar-links">
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="cart.html">Cart</a>
-        <a href="auth.html" class="active">Login</a>
-        <a href="discounts.html">Discounts</a>
-        <a href="team.html">Team</a>
-        <a href="profile.html">Profile</a>
-      </nav>
-    </div>
-  </header>
+        <header>
+            <div class="navbar-container">
+                <div class="navbar-logo">Ashana Hub</div>
+                <nav class="navbar-links">
+                    <a href="index.html">Home</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="auth.html" class="active">Login</a>
+                    <a href="discounts.html">Discounts</a>
+                    <a href="team.html">Team</a>
+                    <a href="profile.html">Profile</a>
+                </nav>
+            </div>
+        </header>
 
-  <main class="container">
-    <section class="card" style="max-width: 400px; margin: 40px auto;">
-      <h1>Login</h1>
-      <form id="auth-form">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        <main class="container">
+            <section class="card" style="max-width:400px;margin:40px auto;">
+                <h1>Login</h1>
+                <form>
+                    <label for="Email">Email</label>
+                    <input type="email" name="email" id="Email" placeholder="Enter your email">
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                    <label for="Password">Password</label>
+                    <input type="password" name="password" id="Password" placeholder="Enter your password">
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div>
-            <input type="checkbox" id="remember" />
-            <label for="remember">Remember me</label>
-          </div>
-          <a href="#" style="font-size: 0.95em;">Forgot password?</a>
-        </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                        <div>
+                            <input type="checkbox" id="Remember">
+                            <label for="Remember">Remember me</label>
+                        </div>
+                        <a href="" style="font-size:0.95em;">Forgot password?</a>
+                    </div>
 
-        <button type="submit">Sign in</button>
-        <div id="error-msg" style="color: red; margin-top: 12px;"></div>
+                    <button type="submit">Sign in</button>
+                    <div style="margin-top:18px;text-align:center;">
+                        <span style="font-size:0.97em;">Don't have an account?</span>
+                        <a href="" style="margin-left:6px;">Sign up</a>
+                    </div>
+                </form>
+            </section>
+        </main>
 
-        <div style="margin-top: 18px; text-align: center;">
-          <span style="font-size: 0.97em;">Don't have an account?</span>
-          <a href="#" style="margin-left: 6px;">Sign up</a>
-        </div>
-      </form>
-    </section>
-  </main>
+        <footer class="footer">
+            <p>© 2025 Asxana.hub. All rights reserved.</p>
+        </footer>
 
-  <footer class="footer">
-    <p>© 2025 Ashana Hub. All rights reserved.</p>
-  </footer>
 
-  <script src="scripts/auth.js"></script>
+
 </body>
 </html>

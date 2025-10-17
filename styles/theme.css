@@ -1,3 +1,59 @@
+/* Popup Modal Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.popup-overlay.show {
+  display: flex !important;
+}
+.popup-modal {
+  max-width: 420px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0;
+  position: relative;
+}
+.popup-modal .card-body {
+  padding: 32px 24px 24px 24px;
+}
+.btn-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+.faq-item {
+  margin-bottom: 12px;
+}
+.faq-q {
+  font-weight: 600;
+  color: var(--primary);
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+.faq-a {
+  display: none;
+  margin-top: 6px;
+  color: var(--text);
+}
+.faq-item.open .faq-a {
+  display: block;
+}
 /* Popup overlay show class for visibility */
 .popup-overlay {
   display: none;
@@ -211,75 +267,3 @@ button:hover, .btn:hover, .sign-in-button:hover {
     padding: 12px;
   }
 }
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.product-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-.product-info {
-  flex: 1;
-}
-.quantity {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.quantity button {
-  background: var(--accent);
-  border: none;
-  padding: 6px 12px;
-  font-size: 1.2rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-.price {
-  font-weight: 600;
-  color: var(--primary);
-}
-.remove-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--secondary);
-}
-
-.payment-section .card-icons {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.payment-section .card-icons img {
-  width: 50px;
-  height: auto;
-}
-
-.form-row {
-  display: flex;
-  gap: 12px;
-}
-.form-row div {
-  flex: 1;
-}
-
-.checkout-btn {
-  width: 100%;
-  background: var(--primary);
-  color: #fff;
-  padding: 14px;
-  font-size: 1.1rem;
-  border-radius: var(--radius);
-  margin-top: 16px;
-  cursor: pointer;
-}
-.checkout-btn:hover {
-  background: var(--secondary);
-}
-

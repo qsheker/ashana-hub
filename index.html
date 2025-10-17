@@ -1,345 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AsxanaHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+New&display=swap" rel="stylesheet">
-  <style>
-    /* --- Cherry-Cart Minimal Style for AsxanaHub --- */
-
-    :root {
-      --primary: #FF5E5B;
-      --border: #000;
-      --bg: #fff;
-      --text: #222;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--bg);
-      font-family: 'Courier New', monospace;
-      color: var(--text);
-      line-height: 1.6;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* --- Header + Navbar --- */
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--bg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 15px 0;
-      margin-bottom: 40px;
-    }
-
-    .navbar-container {
-      display: flex;
-      justify-content: center; 
-      align-items: center;
-      gap: 50px;
-      flex-wrap: wrap;
-    }
-
-    .navbar-logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--primary);
-    }
-
-    .navbar-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .navbar-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: color 0.2s;
-      font-size: 1rem;
-    }
-
-    .navbar-links a:hover {
-      color: var(--primary);
-    }
-
-    #menu a {
-      text-decoration: none;
-      color: black;
-    }
-
-    #menu a:hover {
-      color: rgb(51, 51, 176);
-    }
-
-    h1, h2 {
-      font-family: 'Courier New', monospace;
-      color: var(--text);
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin: 30px 0;
-    }
-
-    /* Main Layout */
-    main {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      flex: 1;
-      width: 100%;
-    }
-
-    /* Sections */
-    .section {
-      width: 100%;
-    }
-
-    .section h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    /* Grid Containers */
-    .about-container, .reviews-container, .menu-container, .bottom-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* Cards */
-    .card, .food-item, .about-card, .review-card {
-      background: var(--bg);
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 6px 6px 0px var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-      min-height: 220px;
-    }
-
-    .card:hover, .food-item:hover, .about-card:hover, .review-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 10px 10px 0px var(--border);
-    }
-
-    .food-item h3, .about-card h3, .review-card h3, .card h3 {
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-    }
-
-    .food-item p, .about-card p, .review-card p, .card p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-      flex: 1;
-      line-height: 1.5;
-    }
-
-    .review-author {
-      font-weight: bold;
-      font-size: 0.95rem;
-      color: var(--text);
-      margin-top: 15px;
-    }
-
-    /* Buttons */
-    button {
-      background: var(--primary);    
-      color: var(--bg);               
-      padding: 12px 30px;             
-      border: none;                   
-      border-radius: 10px;            
-      font-size: 1rem;                
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;   
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      margin-top: auto;
-      width: 100%;
-      max-width: 200px;
-    }
-
-    button:hover {
-      background: #ff3b3b;           
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-
-    button:active {
-      transform: translateY(0);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-
-    /* Bottom Section */
-    .bottom-section {
-      margin-top: 40px;
-    }
-
-    .bottom-section h2 {
-      margin-bottom: 40px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--bg);
-      color: var(--text);
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      border-top: 2px solid var(--border);
-      font-size: 1rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      .navbar-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .navbar-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-      }
-      
-      .about-container, .reviews-container, .menu-container, .bottom-cards {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-      }
-      
-      main {
-        gap: 50px;
-        padding: 15px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .about-container, .reviews-container, .menu-container, .bottom-cards {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 400px;
-      }
-      
-      body {
-        padding: 10px;
-      }
-      
-      main {
-        padding: 10px;
-        gap: 40px;
-      }
-      
-      .card, .food-item, .about-card, .review-card {
-        padding: 25px;
-        min-height: 200px;
-      }
-      
-      h2 {
-        font-size: 1.7rem;
-        margin: 25px 0;
-      }
-      
-      .navbar-logo {
-        font-size: 1.5rem;
-      }
-      
-      .navbar-links {
-        gap: 15px;
-      }
-      
-      .navbar-links a {
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .about-container, .reviews-container, .menu-container, .bottom-cards {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      
-      .card, .food-item, .about-card, .review-card {
-        padding: 20px;
-        min-height: 180px;
-      }
-    }
-
-    #bgSection {
-    text-align: center; /* центрирует кнопку и заголовок */
-    margin-top: 50px;
-    }
-
-  #colorBtn {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  }
-
-
-    /* Accordion */
-.accordion-item {
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  margin: 10px 0;
-  overflow: hidden;
-}
-
-.accordion-title {
-  padding: 15px;
-  background: var(--primary);
-  color: var(--bg);
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.accordion-content {
-  display: none;
-  padding: 15px;
-  background: var(--bg);
-  color: var(--text);
-  border-top: 1px solid var(--border);
-  animation: fadeIn 0.3s ease;
-}
-
-.accordion-item.active .accordion-content {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-  </style>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/theme.css">
+    <title>Asxana.hub</title>
 </head>
 <body>
         <header>
@@ -349,7 +14,7 @@
                     <a href="#about">About Us</a>
                     <a href="#menu">Best</a>
                     <a href="#reviews">Reviews</a>
-                    <a href="menu.html">Menu</a>
+                    <a href="index.html">Menu</a>
                     <a href="cart.html">Cart</a>
                     <a href="auth.html">Login</a>
                     <a href="discounts.html">Discounts</a>
@@ -360,153 +25,64 @@
         </header>
 
         <main class="container">
-            <section id="about" class="card">
-                <h2>About Us</h2>
+            <section id="about" class="card shadow-sm mb-4">
+                <h2 class="h5 mb-3">About Us</h2>
                 <p>At Asxana.hub, we believe that food is more than just a meal — it is an experience. Our mission is to bring you delicious, fresh, and high-quality dishes that make every bite enjoyable.</p>
             </section>
 
-            <section id="menu">
-                <h2>Best Foods</h2>
-                <div class="food-list">
-                    <a href="menu.html">
-                        <div class="food-item">
-                            <h3>Donerhub</h3>
+            <section id="menu" class="card shadow-sm mb-4">
+                <h2 class="h5 mb-3">Best Foods</h2>
+                <div class="food-list" style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+                    <a href="menu.html" style="text-decoration:none;">
+                        <div class="food-item card" style="width:180px;text-align:center;">
+                            <h3 style="color:var(--primary);font-weight:600;">Donerhub</h3>
                             <p>Juicy doner with our special sauce</p>
                         </div>
                     </a>
-                    <a href="menu.html">
-                        <div class="food-item">
-                            <h3>Vibeshake</h3>
+                    <a href="menu.html" style="text-decoration:none;">
+                        <div class="food-item card" style="width:180px;text-align:center;">
+                            <h3 style="color:var(--primary);font-weight:600;">Vibeshake</h3>
                             <p>Refreshing milkshake for every vibe</p>
                         </div>
                     </a>
-                    <a href="menu.html">
-                        <div class="food-item">
-                            <h3>MVP-burger</h3>
+                    <a href="menu.html" style="text-decoration:none;">
+                        <div class="food-item card" style="width:180px;text-align:center;">
+                            <h3 style="color:var(--primary);font-weight:600;">MVP-burger</h3>
                             <p>Your first bite to success</p>
                         </div>
                     </a>
                 </div>
             </section>
-            <section id="reviews" class="card">
-                <h2>Reviews</h2>
+
+            <section class="card shadow-sm mb-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="h5 mb-0">Background</h2>
+                    <button id="changeBgBtn" class="btn btn-outline-primary">Change Background</button>
+                </div>
+            </section>
+
+            <section class="card shadow-sm mb-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h2 class="h5 mb-0">Current Date & Time</h2>
+                    <div id="clock" class="fw-semibold"></div>
+                </div>
+            </section>
+
+            <section id="reviews" class="card shadow-sm mb-4">
+                <h2 class="h5 mb-3">Reviews</h2>
                 <blockquote>"Best burger in town!" – Alex</blockquote>
                 <blockquote>"Loved the doner, so fresh!" – Aida</blockquote>
                 <blockquote>"Tamak damdi koroche" – Aldiar</blockquote>
             </section>
         </main>
 
-    <section id="bgSection" class="section">
-  <h2>Background Changer</h2>
-  <button id="colorBtn">Change Background</button>
-</section>
-
-<script>// --- Task 4: Change Background Color ---
-const colors = ["#f28b82", "#fbbc04", "#34a853", "#4285f4", "#9c27b0"];
-
-document.getElementById("colorBtn").addEventListener("click", function () {
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  document.body.style.backgroundColor = randomColor;
-});
-</script>
 
 
-    <!-- Best Menu Items -->
-    <section id="menu" class="section">
-      <h2>Best Foods</h2>
-      <div class="menu-container">
-        <div class="food-item">
-          <h3>Donerhub</h3>
-          <p>Juicy doner with our special sauce</p>
-          <button>Order Now</button>
-        </div>
-        <div class="food-item">
-          <h3>Vibeshake</h3>
-          <p>Refreshing milkshake for every vibe</p>
-          <button>Order Now</button>
-        </div>
-        <div class="food-item">
-          <h3>MVP-Burger</h3>
-          <p>Your first bite to success</p>
-          <button>Order Now</button>
-        </div>
-        <div class="food-item">
-          <h3>Startup Fries</h3>
-          <p>Crispy golden fries — the sidekick to every big idea</p>
-          <button>Order Now</button>
-        </div>
-      </div>
-    </section>
+        <footer class="footer">
+            <p>© 2025 Asxana.hub. All rights reserved.</p>
+            <p>by Almadi, Aldiyar, Nurgeldi, Aibek</p>
+        </footer>
 
-    <!-- Special Offer & Contact Us -->
-    <section class="bottom-section">
-      <h2>Special Offers & Contact</h2>
-      <div class="bottom-cards">
-        <div class="card">
-          <h3>Special Offer</h3>
-          <p>Get 10% off your first order with code: WELCOME10</p>
-          <button>Use Now</button>
-        </div>
-        <div class="card">
-          <h3>Contact Us</h3>
-          <p>Have questions? Reach out at support@asxanahub.com</p>
-          <button>Send Email</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FAQ Section -->
-<section id="faq" class="section">
-  <h2>FAQ</h2>
-  <div class="accordion">
-    <div class="accordion-item">
-      <h3 class="accordion-title">What is AsxanaHub?</h3>
-      <div class="accordion-content">AsxanaHub is a food delivery platform with the best offers and vibes.</div>
-    </div>
-
-    <div class="accordion-item">
-      <h3 class="accordion-title">How can I order food?</h3>
-      <div class="accordion-content">Simply click the "Order Now" button on your favorite item, add to cart, and checkout.</div>
-    </div>
-
-    <div class="accordion-item">
-      <h3 class="accordion-title">Do you offer student discounts?</h3>
-      <div class="accordion-content">Yes, we offer special discounts for students — check our Discounts page!</div>
-    </div>
-  </div>
-</section>
-
-<script>
-  // Accordion logic
-  document.querySelectorAll(".accordion-title").forEach(title => {
-    title.addEventListener("click", () => {
-      const item = title.parentElement;
-      item.classList.toggle("active");
-    });
-  });
-</script>
-
-<script>
-  function updateDateTime() {
-    const now = new Date();
-    const formatted = now.toLocaleString("en-US", {
-      dateStyle: "long",
-      timeStyle: "short"
-    });
-    document.getElementById("dateTime").textContent = formatted;
-  }
-
-  setInterval(updateDateTime, 1000);
-  updateDateTime();
-</script>
-
-
-  <!-- Footer -->
-  <footer>
-    <div id="dateTime" style="margin-bottom: 10px; font-weight: bold;"></div>
-    © 2025 Asxana.hub. All rights reserved. by Almadi, Aldiyar, Nurgeldi, Aibek
-  </footer>
-
+        <script src="scripts/app.js"></script>
 </body>
 </html>
