@@ -210,8 +210,76 @@ button:hover, .btn:hover, .sign-in-button:hover {
   .card, .about-card, .food-item, .discount-card, .member-block {
     padding: 12px;
   }
-
-  #clock {
-    display: none;
-  }
 }
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.product-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.product-info {
+  flex: 1;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quantity button {
+  background: var(--accent);
+  border: none;
+  padding: 6px 12px;
+  font-size: 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.price {
+  font-weight: 600;
+  color: var(--primary);
+}
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+.payment-section .card-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.payment-section .card-icons img {
+  width: 50px;
+  height: auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+.form-row div {
+  flex: 1;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px;
+  font-size: 1.1rem;
+  border-radius: var(--radius);
+  margin-top: 16px;
+  cursor: pointer;
+}
+.checkout-btn:hover {
+  background: var(--secondary);
+}
+
