@@ -283,6 +283,53 @@
         min-height: 180px;
       }
     }
+
+    #bgSection {
+    text-align: center; /* центрирует кнопку и заголовок */
+    margin-top: 50px;
+    }
+
+  #colorBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  }
+
+
+    /* Accordion */
+.accordion-item {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.accordion-title {
+  padding: 15px;
+  background: var(--primary);
+  color: var(--bg);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.accordion-content {
+  display: none;
+  padding: 15px;
+  background: var(--bg);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  animation: fadeIn 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
   </style>
 </head>
 <body>
@@ -320,6 +367,21 @@
         </div>
       </div>
     </section>
+
+    <section id="bgSection" class="section">
+  <h2>Background Changer</h2>
+  <button id="colorBtn">Change Background</button>
+</section>
+
+<script>// --- Task 4: Change Background Color ---
+const colors = ["#f28b82", "#fbbc04", "#34a853", "#4285f4", "#9c27b0"];
+
+document.getElementById("colorBtn").addEventListener("click", function () {
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.body.style.backgroundColor = randomColor;
+});
+</script>
+
 
     <!-- Best Menu Items -->
     <section id="menu" class="section">
@@ -389,8 +451,55 @@
     </section>
   </main>
 
+  <!-- FAQ Section -->
+<section id="faq" class="section">
+  <h2>FAQ</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <h3 class="accordion-title">What is AsxanaHub?</h3>
+      <div class="accordion-content">AsxanaHub is a food delivery platform with the best offers and vibes.</div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-title">How can I order food?</h3>
+      <div class="accordion-content">Simply click the "Order Now" button on your favorite item, add to cart, and checkout.</div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-title">Do you offer student discounts?</h3>
+      <div class="accordion-content">Yes, we offer special discounts for students — check our Discounts page!</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordion logic
+  document.querySelectorAll(".accordion-title").forEach(title => {
+    title.addEventListener("click", () => {
+      const item = title.parentElement;
+      item.classList.toggle("active");
+    });
+  });
+</script>
+
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    const formatted = now.toLocaleString("en-US", {
+      dateStyle: "long",
+      timeStyle: "short"
+    });
+    document.getElementById("dateTime").textContent = formatted;
+  }
+
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
+</script>
+
+
   <!-- Footer -->
   <footer>
+    <div id="dateTime" style="margin-bottom: 10px; font-weight: bold;"></div>
     © 2025 Asxana.hub. All rights reserved. by Almadi, Aldiyar, Nurgeldi, Aibek
   </footer>
 
