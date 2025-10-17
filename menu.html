@@ -2,246 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu - AsxanaHub</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Ваш кастомный CSS для сохранения оригинального стиля -->
-  <style>
-    :root {
-      --primary: #FF5E5B;
-      --border: #000;
-      --bg: #fff;
-      --text: #222;
-    }
-    
-    .custom-primary { 
-      background-color: var(--primary) !important; 
-      border-color: var(--primary) !important; 
-      color: rgb(228, 228, 228) !important;
-    }
-    
-    .custom-primary:hover { 
-      background-color: #e04c49 !important; 
-      border-color: #e04c49 !important;
-      color: white !important;
-    }
-    
-    /* Ваши оригинальные тени и стили карточек */
-    .custom-card {
-      background: var(--bg);
-      border: 2px solid var(--border) !important;
-      border-radius: 12px;
-      box-shadow: 6px 6px 0px var(--border) !important;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .custom-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 10px 10px 0px var(--border) !important;
-    }
-    
-    /* Сохраняем ваш шрифт */
-    body {
-      font-family: 'Courier New', monospace;
-      background-color: var(--bg);
-      color: var(--text);
-    }
-    
-    /* Стили для кнопок как в вашем CSS */
-    .custom-btn {
-      background: var(--primary);
-      color: var(--bg);
-      padding: 10px 22px;
-      border: 2px solid var(--border) !important;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .custom-btn:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 4px 4px 0px var(--border);
-      color: var(--bg);
-    }
-    
-    @media (max-width: 992px) {
-  h2 {
-    font-size: 2rem;
-  }
-
-  .custom-card {
-    box-shadow: 4px 4px 0px var(--border) !important;
-  }
-
-  .custom-btn {
-    padding: 8px 18px;
-    font-size: 0.95rem;
-  }
-
-  nav.navbar {
-    text-align: center;
-  }
-
-  .navbar-nav {
-    margin-top: 10px;
-  }
-}
-
-/* --- Для телефонов (до 768px) --- */
-@media (max-width: 768px) {
-  body {
-    font-size: 0.9rem;
-    padding: 0 10px;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  .custom-card {
-    border-width: 1.5px;
-    padding: 12px;
-  }
-
-  .custom-btn {
-    padding: 8px 14px;
-    font-size: 0.9rem;
-  }
-
-  footer p {
-    font-size: 0.85rem;
-  }
-}
-
-/* --- Для очень маленьких экранов (до 480px) --- */
-@media (max-width: 480px) {
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  .custom-btn {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-  }
-
-  .custom-card {
-    box-shadow: 3px 3px 0px var(--border) !important;
-  }
-
-  nav .navbar-brand {
-    font-size: 1.2rem;
-  }
-}
-  </style>
+  <title>Menu - Asxana.hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
-  <!-- Bootstrap Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#edbbba;">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="main.html" style="color: var(--primary);">AsxanaHub</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-          <li class="nav-item"><a class="nav-link" href="auth.html">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="discounts.html">Discounts</a></li>
-          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
-          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-        </ul>
-      </div>
+  <header>
+    <div class="navbar-container">
+      <div class="navbar-logo">AsxanaHub</div>
+      <nav class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="cart.html">Cart</a>
+        <a href="auth.html">Login</a>
+        <a href="discounts.html">Discounts</a>
+        <a href="team.html">Team</a>
+        <a href="profile.html">Profile</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Bootstrap Menu Section с вашими стилями -->
-  <section id="menu" class="container my-5">
-    <h2 class="text-center mb-4 display-5 fw-bold">Food - Menu</h2>
-    
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">Donerhub - <span class="text-danger">3.99$</span></h5>
-            <p class="card-text flex-grow-1">Juicy doner with our special cherry sauce.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
+  <main class="container">
+    <section id="menu" class="card">
+      <h2>Food - Menu</h2>
+      <div class="food-list">
+        <div class="food-item">
+          <h3>Donerhub <span style="font-weight:400">- <i>3.99$</i></span></h3>
+          <p>Juicy doner with our special cherry sauce.</p>
+          <button>Order Now</button>
         </div>
-      </div>
-      
-      <!-- Card 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">Vibeshake - <span class="text-danger">2.65$</span></h5>
-            <p class="card-text flex-grow-1">Refreshing milkshake that matches your vibe.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
+        <div class="food-item">
+          <h3>Vibeshake <span style="font-weight:400">- <i>2.65$</i></span></h3>
+          <p>Refreshing milkshake that matches your vibe.</p>
+          <button>Order Now</button>
         </div>
-      </div>
-      
-      <!-- Card 3 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">MVP-Burger - <span class="text-danger">5.20$</span></h5>
-            <p class="card-text flex-grow-1">Your first bite to success — soft bun, fresh veggies, and premium beef.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
+        <div class="food-item">
+          <h3>MVP-Burger <span style="font-weight:400">- <i>5.20$</i></span></h3>
+          <p>Your first bite to success — soft bun, fresh veggies, and premium beef.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>Startup Fries <span style="font-weight:400">- <i>2.99$</i></span></h3>
+          <p>Crispy golden fries — the sidekick to every big idea.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>Cherry Cheesecake <span style="font-weight:400">- <i>4.50$</i></span></h3>
+          <p>Creamy cheesecake with a cherry topping, perfect for sweet lovers.</p>
+          <button>Order Now</button>
+        </div>
+        <div class="food-item">
+          <h3>CodeCoffee <span style="font-weight:400">- <i>1.99$</i></span></h3>
+          <p>Strong coffee to fuel your coding sessions — hot and energizing.</p>
+          <button>Order Now</button>
         </div>
       </div>
     </section>
   </main>
 
-      <!-- Card 4 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">Startup Fries - <span class="text-danger">2.99$</span></h5>
-            <p class="card-text flex-grow-1">Crispy golden fries — the sidekick to every big idea.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">Cherry Cheesecake - <span class="text-danger">4.50$</span></h5>
-            <p class="card-text flex-grow-1">Creamy cheesecake with a cherry topping, perfect for sweet lovers.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="custom-card h-100 p-3">
-          <div class="card-body d-flex flex-column p-0">
-            <h5 class="card-title fw-bold">CodeCoffee - <span class="text-danger">1.99$</span></h5>
-            <p class="card-text flex-grow-1">Strong coffee to fuel your coding sessions — hot and energizing.</p>
-            <button class="custom-btn mt-auto w-100">Order Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bootstrap Footer с вашими стилями -->
-  <footer class="py-4 mt-5" style="background-color: var(--bg); border-top: 2px solid var(--border);">
-    <div class="container text-center">
-      <p class="mb-1">© 2025 Asxana.hub. All rights reserved.</p>
-      <p class="mb-0">Team: Almadi, Aldiyar, Nurgeldi, Aibek, Group: SE-2417</p>
-    </div>
+  <footer class="footer">
+    <p>© 2025 Asxana.hub. All rights reserved.</p>
   </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

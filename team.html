@@ -75,6 +75,39 @@
                     <p class="card-text">Barista - "Life happens, coffee helps!"</p>
                     <p class="text-muted">Favorite dish: Lagman</p>
                 </div>
+<<<<<<< HEAD
+            </section>
+        </main>
+                <div style="display:flex;justify-content:center;margin:32px 0;">
+                    <section class="card shadow-sm mb-4" style="max-width:350px;width:100%;">
+                        <div class="card-body" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+                            <h2 class="h5 mb-0" style="margin-bottom:8px;">Stay in touch</h2>
+                            <button id="openPopupBtn" class="btn btn-success" style="width:160px;">Subscribe</button>
+                        </div>
+                    </section>
+                </div>
+
+        <div id="popupOverlay" class="popup-overlay" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);display:none;align-items:center;justify-content:center;z-index:999;">
+            <div class="card popup-window" role="dialog" aria-modal="true" aria-labelledby="popupTitle" style="max-width:350px;width:100%;padding:32px 24px;box-shadow:0 2px 16px rgba(0,0,0,0.12);border-radius:14px;position:relative;">
+                <button id="closePopupBtn" class="btn popup-close" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.5rem;line-height:1;cursor:pointer;">&times;</button>
+                <h3 id="popupTitle" class="h5 mb-3" style="text-align:center;">Subscribe to news</h3>
+                <form id="popupForm" novalidate>
+                    <div class="mb-3">
+                        <label for="popupEmail" class="form-label">Email</label>
+                        <input id="popupEmail" type="email" class="form-control" required style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--border);">
+                        <div class="invalid-feedback">Enter a valid email.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" style="width:100%;margin-top:10px;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+
+        <footer class="footer">
+                <p>© 2025 Asxana.hub. All rights reserved.</p>
+        </footer>
+=======
             </div>
         </div>
     </section>
@@ -130,5 +163,6 @@
         });
     });
     </script>
+>>>>>>> bcd1e0348bffb53d90ba41cd2c7115983ed02451
 </body>
 </html>

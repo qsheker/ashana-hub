@@ -39,3 +39,15 @@ function updateCartCount() {
   const items = document.querySelectorAll('.cart-item');
   document.getElementById('cart-count').textContent = items.length;
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const toggles = document.querySelectorAll('.accordion-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const content = toggle.nextElementSibling;
+      content.classList.toggle('show');
+    });
+  });
+});
+
+
