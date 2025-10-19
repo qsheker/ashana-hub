@@ -477,3 +477,119 @@ button:hover, .btn:hover, .sign-in-button:hover {
 .food-item:nth-child(4) { animation-delay: 0.3s; }
 .food-item:nth-child(5) { animation-delay: 0.4s; }
 .food-item:nth-child(6) { animation-delay: 0.5s; }
+
+
+.random-fact-container {
+  text-align: center;
+  margin: 25px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, #fff 100%);
+  border-radius: var(--radius);
+  border: 2px dashed var(--primary);
+}
+
+.random-fact-btn {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.random-fact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 94, 91, 0.4);
+}
+
+.random-fact-btn:active {
+  transform: translateY(-1px);
+}
+
+.random-fact-btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.random-fact {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--secondary);
+  box-shadow: var(--shadow);
+  font-family: var(--font-main);
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+
+.random-fact.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.random-fact-content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: italic;
+}
+
+.random-fact-content::before,
+.random-fact-content::after {
+  content: '"';
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.random-fact-author {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.random-fact-category {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  background: var(--accent);
+  color: var(--secondary);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.random-fact-btn.pulse {
+  animation: pulse 0.5s ease-in-out;
+}

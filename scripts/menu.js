@@ -122,3 +122,181 @@ document.addEventListener('keydown', function(event) {
         closeAllDescriptionsExcept(null);
     }
 });
+
+
+const randomFacts = [
+  {
+    content: "Food is not just nutrition, it's an art that brings people together.",
+    author: "Chef Asxana",
+    category: "philosophy"
+  },
+  {
+    content: "The best dishes are created with love and attention to detail.",
+    author: "Culinary Wisdom",
+    category: "cooking"
+  },
+  {
+    content: "Donerhub was created after 3 months of sauce experiments!",
+    author: "AsxanaHub History",
+    category: "fact"
+  },
+  {
+    content: "Our CodeCoffee contains 20% more caffeine than regular coffee.",
+    author: "Barista Ali",
+    category: "secret"
+  },
+  {
+    content: "Vibeshake was originally called 'Mood Cocktail'.",
+    author: "Naming Facts",
+    category: "history"
+  },
+  {
+    content: "MVP-Burger got its name after helping close an important business deal.",
+    author: "AsxanaHub Legend",
+    category: "history"
+  },
+  {
+    content: "The secret ingredient in Startup Fries is a pinch of innovation!",
+    author: "Innovator Chef",
+    category: "secret"
+  },
+  {
+    content: "Cherry Cheesecake is baked for exactly 4 hours 20 minutes - the magical time for perfect flavor.",
+    author: "Pastry Chef Maria",
+    category: "technique"
+  },
+  {
+    content: "Every cup of CodeCoffee comes with a random programming fact.",
+    author: "Tradition",
+    category: "feature"
+  },
+  {
+    content: "Our kitchen uses only seasonal products from local farmers.",
+    author: "Eco Policy",
+    category: "quality"
+  },
+  {
+    content: "The packaging design is inspired by minimalism and functionality.",
+    author: "Designer Aigerim",
+    category: "design"
+  },
+  {
+    content: "The music in the kitchen is selected to match the type of dish being prepared.",
+    author: "Atmosphere",
+    category: "detail"
+  }
+];
+
+class RandomFacts {
+  constructor() {
+    this.facts = randomFacts;
+    this.lastFactIndex = -1;
+    this.init();
+  }
+
+  init() {
+    const button = document.getElementById('randomFactBtn');
+    const factContainer = document.getElementById('randomFact');
+    
+    if (button && factContainer) {
+      button.addEventListener('click', () => this.showRandomFact());
+      
+      setTimeout(() => {
+        this.showRandomFact();
+      }, 2000);
+    }
+  }
+
+  getRandomFact() {
+    let randomIndex;
+    
+    do {
+      randomIndex = Math.floor(Math.random() * this.facts.length);
+    } while (randomIndex === this.lastFactIndex && this.facts.length > 1);
+    
+    this.lastFactIndex = randomIndex;
+    return this.facts[randomIndex];
+  }
+
+  async showRandomFact() {
+    const button = document.getElementById('randomFactBtn');
+    const factContainer = document.getElementById('randomFact');
+    
+    if (!button || !factContainer) return;
+
+    button.classList.add('loading', 'pulse');
+    button.innerHTML = 'Loading...';
+
+    await this.delay(800);
+
+    const fact = this.getRandomFact();
+    
+
+    factContainer.innerHTML = `
+      <div class="random-fact-content">
+        ${fact.content}
+      </div>
+      <div class="random-fact-author">— ${fact.author}</div>
+      <div class="random-fact-category">#${fact.category}</div>
+    `;
+
+    factContainer.classList.add('show');
+
+    button.classList.remove('loading', 'pulse');
+    button.innerHTML = 'Show another fact';
+    this.autoHideFact();
+  }
+
+  autoHideFact() {
+    setTimeout(() => {
+      const factContainer = document.getElementById('randomFact');
+      if (factContainer) {
+        factContainer.classList.remove('show');
+      }
+    }, 10000);
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  addFact(content, author = "AsxanaHub", category = "факт") {
+    this.facts.push({ content, author, category });
+  }
+
+  getFactsCount() {
+    return this.facts.length;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  window.randomFactsApp = new RandomFacts();
+  
+  window.showRandomFact = function() {
+    if (window.randomFactsApp) {
+      window.randomFactsApp.showRandomFact();
+    }
+  };
+});
+
+const FactUtils = {
+  getFactByCategory(category) {
+    const filteredFacts = randomFacts.filter(fact => 
+      fact.category.toLowerCase() === category.toLowerCase()
+    );
+    return filteredFacts.length > 0 
+      ? filteredFacts[Math.floor(Math.random() * filteredFacts.length)]
+      : null;
+  },
+
+  getCategories() {
+    return [...new Set(randomFacts.map(fact => fact.category))];
+  },
+
+  searchFacts(keyword) {
+    return randomFacts.filter(fact => 
+      fact.content.toLowerCase().includes(keyword.toLowerCase()) ||
+      fact.author.toLowerCase().includes(keyword.toLowerCase())
+    );
+  }
+};
