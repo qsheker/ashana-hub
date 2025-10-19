@@ -26,75 +26,36 @@
 	</header>
 		<main class="container">
 			<section class="card">
-				<h1>Special Meal Discounts</h1>
-				<div class="discount-list">
-					<div class="discount-card">
-						<img src="images/pasta-with-chicken.jpeg" alt="Pasta with Chicken">
-						<div class="discount-badge">-25%</div>
-						<div class="meal-name">Pasta with Chicken</div>
-						<div class="meal-desc">Creamy pasta tossed with grilled chicken, mushrooms, and parmesan.</div>
-						<div class="prices">
-							<span class="old-price">650₸</span>
-							<span class="new-price">490₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/ashana-burger.jpg" alt="Ashana Burger">
-						<div class="discount-badge">-20%</div>
-						<div class="meal-name">Ashana Burger</div>
-						<div class="meal-desc">Juicy beef patty, fresh veggies, and Ashana's special sauce in a soft bun.</div>
-						<div class="prices">
-							<span class="old-price">1200₸</span>
-							<span class="new-price">960₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/kyurdak.jpeg" alt="Kyurdak">
-						<div class="discount-badge">-30%</div>
-						<div class="meal-name">Kyurdak</div>
-						<div class="meal-desc">Traditional Central Asian dish with tender lamb, potatoes, and onions.</div>
-						<div class="prices">
-							<span class="old-price">1500₸</span>
-							<span class="new-price">1050₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/chicken-caesar-salad.jpeg" alt="Chicken Caesar Salad">
-						<div class="discount-badge">-15%</div>
-						<div class="meal-name">Chicken Caesar Salad</div>
-						<div class="meal-desc">Crisp romaine, grilled chicken, croutons, and creamy Caesar dressing.</div>
-						<div class="prices">
-							<span class="old-price">900₸</span>
-							<span class="new-price">765₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/cheese-pizza.png" alt="Cheese Pizza">
-						<div class="discount-badge">-18%</div>
-						<div class="meal-name">Cheese Pizza</div>
-						<div class="meal-desc">Classic pizza with mozzarella, cheddar, and tomato sauce.</div>
-						<div class="prices">
-							<span class="old-price">1100₸</span>
-							<span class="new-price">902₸</span>
-						</div>
-					</div>
-					<div class="discount-card">
-						<img src="images/lagman.jpeg" alt="Lagman">
-						<div class="discount-badge">-22%</div>
-						<div class="meal-name">Lagman</div>
-						<div class="meal-desc">Hand-pulled noodles with beef, vegetables, and savory broth.</div>
-						<div class="prices">
-							<span class="old-price">1300₸</span>
-							<span class="new-price">1014₸</span>
-						</div>
-					</div>
-				</div>
+								<h1>Special Meal Discounts</h1>
+								<div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+									<button id="enableSoundDiscounts" class="btn btn-outline-primary" type="button">Enable Sound</button>
+									<div style="color:#666;font-size:0.95rem;">Click to enable audio for interactions</div>
+								</div>
+								<div id="discountGrid" class="discount-list grid"></div>
 			</section>
 		</main>
-</body>
-</html>
-	<footer class="footer">
-		<p>© 2025 Asxana.hub. All rights reserved.</p>
-	</footer>
-</body>
+
+		<footer class="footer">
+			<p>© 2025 Asxana.hub. All rights reserved.</p>
+		</footer>
+
+		<script src="scripts/ui.js"></script>
+		<script src="scripts/app.js"></script>
+		<script>
+		  (function(){
+		    const btn = document.getElementById('enableSoundDiscounts');
+		    let enabled = false;
+		    btn?.addEventListener('click', () => {
+		      if (!enabled) {
+		        AudioPlayer.resume()?.then(() => {
+		          AudioPlayer.beep(0.06, 720);
+		          enabled = true; btn.textContent = 'Disable Sound'; btn.setAttribute('aria-pressed','true');
+		        }).catch(()=>{});
+		      } else {
+		        AudioPlayer.suspend()?.then(() => { enabled = false; btn.textContent = 'Enable Sound'; btn.setAttribute('aria-pressed','false'); }).catch(()=>{});
+		      }
+		    });
+		  })();
+		</script>
+	</body>
 </html>

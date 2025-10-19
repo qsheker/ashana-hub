@@ -25,50 +25,11 @@
         <main class="container">
             <section class="card">
                 <div class="team-title">Meet Our Team</div>
-                <div class="member-block">
-                    <img class="member-photo" src="images/team-aldiar.png" alt="Aldiyar">
-                    <div class="member-info">
-                        <span class="member-role">Founder</span>
-                        <span class="member-name">Aldiyar</span>
-                        <span class="member-quote">"Food is the ingredient that binds us together."</span>
-                        <span class="member-fav">Favorite dish: Kyurdak</span>
-                        <span class="member-contact">Email: aldiar@ashana.com</span>
-                        <span class="member-bio">Aldiyar started Ashana Hub to bring people together over great food. He loves experimenting with new recipes and believes every meal should be memorable.</span>
-                    </div>
-                </div>
-                <div class="member-block">
-                    <img class="member-photo" src="images/team-aibek.png" alt="Aibek">
-                    <div class="member-info">
-                        <span class="member-role">Chef</span>
-                        <span class="member-name">Aibek</span>
-                        <span class="member-quote">"Every dish is a new adventure!"</span>
-                        <span class="member-fav">Favorite dish: Pasta with Chicken</span>
-                        <span class="member-contact">Email: aibek@ashana.com</span>
-                        <span class="member-bio">Aibek crafts the menu and ensures every plate is perfect. He’s passionate about fresh ingredients and creative flavors.</span>
-                    </div>
-                </div>
-                <div class="member-block">
-                    <img class="member-photo" src="images/team-nurgeldi.png" alt="Nurgeldi">
-                    <div class="member-info">
-                        <span class="member-role">Manager</span>
-                        <span class="member-name">Nurgeldi</span>
-                        <span class="member-quote">"Service with a smile, always."</span>
-                        <span class="member-fav">Favorite dish: Cheese Pizza</span>
-                        <span class="member-contact">Email: nurgeldi@ashana.com</span>
-                        <span class="member-bio">Nurgeldi keeps the restaurant running smoothly and makes sure every guest feels at home.</span>
-                    </div>
-                </div>
-                <div class="member-block">
-                    <img class="member-photo" src="images/team-almadi.png" alt="Almadi">
-                    <div class="member-info">
-                        <span class="member-role">Barista</span>
-                        <span class="member-name">Almadi</span>
-                        <span class="member-quote">"Life happens, coffee helps!"</span>
-                        <span class="member-fav">Favorite dish: Lagman</span>
-                        <span class="member-contact">Email: almadi@ashana.com</span>
-                        <span class="member-bio">Almadi is the master of coffee and desserts, always ready with a smile and a fresh brew.</span>
-                    </div>
-                </div>
+                                <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+                                    <button id="enableSoundTeam" class="btn btn-outline-primary" type="button">Enable Sound</button>
+                                    <div style="color:#666;font-size:0.95rem;">Click to enable audio for interactions</div>
+                                </div>
+                                <div id="memberGrid" class="member-grid"></div>
             </section>
         </main>
                 <div style="display:flex;justify-content:center;margin:32px 0;">
@@ -95,30 +56,30 @@
             </div>
         </div>
 
-        <script src="app.js"></script>
-
-<script>
-const overlay = document.getElementById('popupOverlay');
-const openBtn = document.getElementById('openPopupBtn');
-const closeBtn = document.getElementById('closePopupBtn');
-const popupForm = document.getElementById('popupForm');
-const popupEmail = document.getElementById('popupEmail');
-
-openBtn?.addEventListener('click', () => overlay.classList.add('show'));
-closeBtn?.addEventListener('click', () => overlay.classList.remove('show'));
-overlay?.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
-
-popupForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const valid = /\S+@\S+\.\S+/.test(popupEmail.value);
-    popupEmail.classList.toggle('is-invalid', !valid);
-    if (valid) {
-        alert('Subscribed!');
-        overlay.classList.remove('show');
-        popupForm.reset();
-    }
-});
-</script>
+        <script src="scripts/ui.js"></script>
+        <script src="scripts/app.js"></script>
+                                <script>
+                                        (function(){
+                                            const btn = document.getElementById('enableSoundTeam');
+                                            let enabled = false;
+                                            btn?.addEventListener('click', () => {
+                                                if (!enabled) {
+                                                    AudioPlayer.resume()?.then(() => {
+                                                        AudioPlayer.beep(0.06, 880);
+                                                        enabled = true;
+                                                        btn.textContent = 'Disable Sound';
+                                                        btn.setAttribute('aria-pressed', 'true');
+                                                    }).catch(()=>{});
+                                                } else {
+                                                    AudioPlayer.suspend()?.then(() => {
+                                                        enabled = false;
+                                                        btn.textContent = 'Enable Sound';
+                                                        btn.setAttribute('aria-pressed', 'false');
+                                                    }).catch(()=>{});
+                                                }
+                                            });
+                                        })();
+                                </script>
 
         <footer class="footer">
                 <p>© 2025 Asxana.hub. All rights reserved.</p>
