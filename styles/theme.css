@@ -482,7 +482,7 @@ button:hover, .btn:hover, .sign-in-button:hover {
 .random-fact-container {
   text-align: center;
   margin: 25px 0;
-  padding: 20px;
+  padding: 10px;
   background: linear-gradient(135deg, var(--accent) 0%, #fff 100%);
   border-radius: var(--radius);
   border: 2px dashed var(--primary);
