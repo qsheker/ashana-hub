@@ -81,3 +81,26 @@ table{ width:100%; }
 .is-invalid {
   border-color: #dc3545;
 }
+body.dark {
+  background: #121212 !important;
+  color: #e9ecef;
+}
+body.dark .card { background-color: #1e1e1e; color: #e9ecef; }
+body.dark .form-control, 
+body.dark .form-select { background-color: #2a2a2a; color: #e9ecef; border-color: #3a3a3a; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-in { animation: fadeIn .35s ease; }
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+.shake { animation: shake .35s ease; }
+
+
