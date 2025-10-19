@@ -173,7 +173,7 @@ class EventHandlers {
         if (offerDisplay) {
             offerDisplay.innerHTML = `
                 <div class="offer-content">
-                    <h4>✨ Special Offer! ✨</h4>
+                    <h4>Special Offer!</h4>
                     <p>${randomOffer}</p>
                     <small>Offer valid for limited time only</small>
                 </div>
@@ -190,11 +190,9 @@ class EventHandlers {
         const itemName = e.target.getAttribute('data-item');
         const notification = this.showNotification(`${itemName} added to cart!`, 'success');
         
-        // Add to cart logic would go here
         console.log(`Quick order: ${itemName}`);
         
-        // Visual feedback
-        e.target.textContent = '✓ Added!';
+        e.target.textContent = 'Added!';
         e.target.style.background = '#28a745';
         setTimeout(() => {
             e.target.textContent = 'Quick Order';
@@ -318,7 +316,6 @@ class EventHandlers {
             timestamp: new Date().toISOString()
         };
 
-        // Simulate API call with callback
         this.submitFormWithCallback(formData, (response) => {
             this.handleFormResponse(response);
         });
