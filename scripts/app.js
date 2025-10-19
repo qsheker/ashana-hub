@@ -112,3 +112,93 @@ document.getElementById('settingsForm')?.addEventListener('submit', (e) => {
 });
 
 
+const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+}
+toggleThemeBtn?.addEventListener('click', toggleTheme);
+
+const playSoundBtn = document.getElementById('playSoundBtn');
+function playBeep(duration = 150, frequency = 880, type = 'sine') {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const ctx = new AudioCtx();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.value = frequency;
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  gain.gain.setValueAtTime(0.05, ctx.currentTime);
+  osc.start();
+  setTimeout(() => { osc.stop(); ctx.close(); }, duration);
+}
+playSoundBtn?.addEventListener('click', () => playBeep());
+
+const shakeCardBtn = document.getElementById('shakeCardBtn');
+shakeCardBtn.addEventListener('click', () => {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.classList.remove('shake');
+    void card.offsetWidth; 
+    card.classList.add('shake');
+    setTimeout(() => card.classList.remove('shake'), 400);
+  });
+});
+
+const galleryData = [
+  { title: 'Cheese Burger', category: 'food',   img: 'https://avatars.mds.yandex.net/i?id=184030df29e312d5f093f764a9a290d19365ae18-5221522-images-thumbs&n=13' },
+  { title: 'Latte',         category: 'drinks', img: 'https://avatars.mds.yandex.net/i?id=10e1175120ee35540462a6a7b6e76e453a03b89e-4080417-images-thumbs&n=13'  },
+  { title: 'Tiramisu',      category: 'dessert',img: 'https://avatars.mds.yandex.net/i?id=bebf0a69e774bd946de5a6a0d6e59d7a9fc03172-12345336-images-thumbs&n=13' },
+  { title: 'Salad',         category: 'food',   img: 'https://avatars.mds.yandex.net/i?id=c200d8f9b7b0a07f1f1336159c93d01d6f7ac14c-5322694-images-thumbs&n=13' },
+  { title: 'Tea',           category: 'drinks', img: 'https://avatars.mds.yandex.net/i?id=6d8c2ad6d09a9f8385875e3360762c3df4394e33-5419040-images-thumbs&n=13'   },
+  { title: 'Cheesecake',    category: 'dessert',img: 'https://avatars.mds.yandex.net/i?id=8c02df8f8043aa580d6e6fecddc1fe0437746c0b-5595218-images-thumbs&n=13' },
+];
+
+const galleryEl = document.getElementById('gallery');
+const galleryFilter = document.getElementById('galleryFilter');
+const shuffleBtn = document.getElementById('shuffleBtn');
+
+function renderGallery(filter = 'all') {
+  
+  let list = galleryData;
+  switch (filter) {
+    case 'food':   list = galleryData.filter(x => x.category === 'food'); break;
+    case 'drinks': list = galleryData.filter(x => x.category === 'drinks'); break;
+    case 'dessert':list = galleryData.filter(x => x.category === 'dessert'); break;
+    default:       list = galleryData;
+  }
+
+  galleryEl.innerHTML = list
+    .map(item => `
+      <div class="col-12 col-sm-6 col-md-4 fade-in">
+        <div class="card h-100">
+          <img src="${item.img}" class="card-img-top" alt="${item.title}">
+          <div class="card-body">
+            <h6 class="card-title mb-0">${item.title}</h6>
+            <small class="text-muted">${item.category}</small>
+          </div>
+        </div>
+      </div>
+    `)
+    .join('');
+}
+
+galleryFilter?.addEventListener('change', (e) => renderGallery(e.target.value));
+shuffleBtn?.addEventListener('click', () => {
+  
+  galleryData.sort(() => Math.random() - 0.5);
+  renderGallery(galleryFilter?.value || 'all');
+});
+
+if (galleryEl) renderGallery('all');
+
+document.addEventListener('keydown', (e) => {
+  const key = e.key.toLowerCase();
+  if (key === 't') toggleTheme();
+  if (key === 's') playBeep();
+  if (key === 'g') shuffleBtn?.click();
+});
+
+
+
+
