@@ -6,9 +6,19 @@
   <title>Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/theme.css">
+  <style>
+    .card-type button {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card-type button:focus,
+    .card-type button.active {
+      transform: scale(1.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-  <header>
+  <header>  
     <div class="navbar-container">
       <div class="navbar-logo">Ashana Hub</div>
       <nav class="navbar-links">
@@ -114,5 +124,7 @@
   </footer>
 
   <script src="scripts/cart.js"></script>
+  <audio id="add-sound" src="sounds/insert-charging-cable-into-smartphone-393115.mp3"></audio>
+  <audio id="remove-sound" src="sounds/remove-charging-cable-into-smartphone-393112.mp3"></audio>
 </body>
 </html>

@@ -51,4 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const addSound = document.getElementById('add-sound');
+  const removeSound = document.getElementById('remove-sound');
 
+  document.querySelectorAll('.cart-plus').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (addSound) addSound.play();
+    });
+  });
+
+  document.querySelectorAll('.cart-remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (removeSound) removeSound.play();
+    });
+  });
+});
