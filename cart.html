@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <link rel="stylesheet" href="styles/theme.css">
   <style>
     .card-type button {
@@ -14,6 +15,23 @@
     .card-type button.active {
       transform: scale(1.2);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    #progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+    }
+    #progress-bar {
+      height: 8px;
+      width: 0%;
+      background: linear-gradient(90deg, #ff9710, #c90b1b);
+      border-radius: 0 4px 4px 0;
+      box-shadow: 0 0 10px #c90b1b, 0 0 20px #ff9710;
+      transition: width 0.1s ease-out;
     }
   </style>
 </head>
@@ -33,6 +51,12 @@
     </div>
   </header>
   <main class="container">
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+  <div>
+    <h1 style="padding:20px;"></h1>
+  </div>
     <div class="card" style="margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;">
       <a href="menu.html" style="text-decoration:none;color:var(--primary);font-weight:500;">← Continue Shopping</a>
     </div>

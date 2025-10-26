@@ -67,3 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+$(window).on("scroll", function() {
+  let scrollTop = $(window).scrollTop();
+  let docHeight = $(document).height() - $(window).height();
+  let scrollPercent = (scrollTop / docHeight) * 100;
+
+  $("#progress-bar").css("width", scrollPercent + "%");
+});
