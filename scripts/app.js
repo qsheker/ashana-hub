@@ -23,7 +23,6 @@ document.querySelectorAll('#faq .faq-q').forEach(btn => {
 const overlay = document.getElementById('popupOverlay');
 document.getElementById('openPopupBtn')?.addEventListener('click', () => overlay.classList.add('show'));
 document.getElementById('closePopupBtn')?.addEventListener('click', () => overlay.classList.remove('show'));
-overlay?.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
 
 document.getElementById('popupForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -34,6 +33,7 @@ document.getElementById('popupForm')?.addEventListener('submit', (e) => {
     alert('Subscribed!');
     overlay.classList.remove('show');
     e.target.reset();
+    btn.disabled = false;
   }
 });
 function initClock() {
@@ -75,35 +75,18 @@ document.getElementById('settingsForm')?.addEventListener('submit', (e) => {
 
   let valid = true;
 
-  // Remove all previous error states
   [username, phone, address, email, pass, confirm].forEach(el => {
-    el.classList.remove('is-invalid');
+    if (!el.value.trim()) {
+      el.classList.add('is-invalid');
+      valid = false;
+    } else {
+      el.classList.remove('is-invalid');
+    }
   });
 
-  if (!username.value.trim()) {
-    username.classList.add('is-invalid');
-    valid = false;
-  }
-  if (!phone.value.trim()) {
-    phone.classList.add('is-invalid');
-    valid = false;
-  }
-  if (!address.value.trim()) {
-    address.classList.add('is-invalid');
-    valid = false;
-  }
-  if (!email.value.trim() || !/\S+@\S+\.\S+/.test(email.value)) {
-    email.classList.add('is-invalid');
-    valid = false;
-  }
-  if (!pass.value.trim() || pass.value.length < 8) {
-    pass.classList.add('is-invalid');
-    valid = false;
-  }
-  if (!confirm.value.trim() || pass.value !== confirm.value) {
-    confirm.classList.add('is-invalid');
-    valid = false;
-  }
+  if (!/\S+@\S+\.\S+/.test(email.value)) { email.classList.add('is-invalid'); valid = false; }
+  if (pass.value.length < 8) { pass.classList.add('is-invalid'); valid = false; }
+  if (pass.value !== confirm.value) { confirm.classList.add('is-invalid'); valid = false; }
 
   if (valid) {
     alert('Profile saved successfully!');
@@ -111,12 +94,6 @@ document.getElementById('settingsForm')?.addEventListener('submit', (e) => {
   }
 });
 
-
-const toggleThemeBtn = document.getElementById('toggleThemeBtn');
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-}
-toggleThemeBtn?.addEventListener('click', toggleTheme);
 
 const playSoundBtn = document.getElementById('playSoundBtn');
 function playBeep(duration = 150, frequency = 880, type = 'sine') {
@@ -181,7 +158,7 @@ function renderGallery(filter = 'all') {
       </div>
     `)
     .join('');
-}
+  }
 
 galleryFilter?.addEventListener('change', (e) => renderGallery(e.target.value));
 shuffleBtn?.addEventListener('click', () => {
@@ -198,8 +175,75 @@ document.addEventListener('keydown', (e) => {
   if (key === 's') playBeep();
   if (key === 'g') shuffleBtn?.click();
 });
+$('#toggleThemeBtn').click(function() {
+  $('body').toggleClass('dark');
+});
 
+$('#searchInput').on('input', function() {
+  let query = $(this).val().toLowerCase();
+  $('.faq-item').each(function() {
+    let question = $(this).find('.faq-q').text().toLowerCase();
+    if (question.indexOf(query) !== -1) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
+$('#shakeCardBtn').click(function() {
+  $('.faq-item').each(function() {
+    $(this).removeClass('shake');
+    void $(this)[0].offsetWidth;  
+    $(this).addClass('shake');
+    setTimeout(() => $(this).removeClass('shake'), 400);
+  });
+});
 
+$('#email').on('focus', function() {
+  $(this).val('example@example.com');
+});
+$(document).ready(function() {
+  $(window).on('scroll', function() {
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+    $('#progress-bar').css('width', scrollPercent + '%');
+  });
+});
 
+$(document).ready(function() {
+  var counter = $('#userCount');
+  var start = 0;
+  var end = 1000;
+  var duration = 2000; 
 
+  function animateCounter() {
+    $({ countNum: start }).animate({ countNum: end }, {
+      duration: duration,
+      easing: 'linear',
+      step: function () {
+        counter.text(Math.floor(this.countNum));
+      },
+      complete: function () {
+        counter.text(this.countNum);
+      }
+    });
+  }
 
+  animateCounter();
+});
+$(document).ready(function() {
+  $('#saveForm').submit(function(e) {
+    e.preventDefault(); 
+    var $saveBtn = $('#saveBtn');
+    var $spinner = $('#spinner');
+    $spinner.show();
+    $saveBtn.prop('disabled', true); 
+    setTimeout(function() {
+      $spinner.hide();
+      $saveBtn.prop('disabled', false); 
+      alert('Data saved successfully!');
+    }, 2000); 
+  });
+});
