@@ -7,6 +7,7 @@
 	<title>Meal Discounts</title>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="styles/theme.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		
 </head>
 <body>
@@ -32,6 +33,22 @@
 									<div style="color:#666;font-size:0.95rem;">Click to enable audio for interactions</div>
 								</div>
 								<div id="discountGrid" class="discount-list grid"></div>
+
+								<!-- Stats with animated counters -->
+								<div class="stats" aria-hidden="false">
+									<div class="stat">
+										<div class="count-up" data-target="340">0</div>
+										<div class="stat-label">Weekly Orders</div>
+									</div>
+									<div class="stat">
+										<div class="count-up" data-target="72">0</div>
+										<div class="stat-label">Active Offers</div>
+									</div>
+									<div class="stat">
+										<div class="count-up" data-target="1500">0</div>
+										<div class="stat-label">Customers Served</div>
+									</div>
+								</div>
 			</section>
 		</main>
 
@@ -41,6 +58,7 @@
 
 		<script src="scripts/ui.js"></script>
 		<script src="scripts/app.js"></script>
+		<script src="scripts/jquery-helpers.js"></script>
 		<script>
 		  (function(){
 		    const btn = document.getElementById('enableSoundDiscounts');

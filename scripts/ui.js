@@ -81,7 +81,8 @@ function renderTeam(containerId = 'memberGrid') {
   container.innerHTML = '';
   const members = Team.getAll();
   members.forEach(m => {
-  const img = create('img', { src: m.img, alt: m.name, class: 'member-photo' });
+  // lazy-load: keep actual image url in data-src, set placeholder src
+  const img = create('img', { 'data-src': m.img, src: 'images/restor.jpg', alt: m.name, class: 'member-photo lazy' });
   img.onerror = () => { img.src = 'images/restor.jpg'; img.classList.add('img-fallback'); };
     const name = create('div', { class: 'member-name', html: `<strong>${m.name}</strong>` });
     const role = create('div', { class: 'member-role', html: m.role });
@@ -118,8 +119,9 @@ function renderDiscounts(containerId = 'discountGrid', list = Discounts.all()) {
   if (!container) return;
   container.innerHTML = '';
   list.forEach(d => {
-      const img = create('img', { src: d.img, alt: d.name, class: 'discount-img' });
-  img.onerror = () => { img.src = 'images/restor.jpg'; img.classList.add('img-fallback'); };
+    // lazy-load discount image
+    const img = create('img', { 'data-src': d.img, src: 'images/restor.jpg', alt: d.name, class: 'discount-img lazy' });
+    img.onerror = () => { img.src = 'images/restor.jpg'; img.classList.add('img-fallback'); };
       const badge = create('div', { class: 'discount-badge', html: `-${d.pct}%` });
     const name = create('div', { class: 'meal-name', html: d.name });
     const desc = create('div', { class: 'meal-desc', html: '' });
