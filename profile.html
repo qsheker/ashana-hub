@@ -1,184 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ashana Hub — Profile</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css"/>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <div id="progress-bar-container">
-  <div id="progress-bar"></div>
-</div>
-
-
 </head>
 <body>
-  
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Ashana Hub</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-      </ul>
-    </div>
+
+  <div id="progress-bar-container" aria-hidden="true">
+    <div id="progress-bar"></div>
   </div>
-</nav>
 
-<main class="container py-4">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+        <span class="brand-dot"></span> Ashana Hub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+          <li class="nav-item"><a class="nav-link active" href="#profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item">
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm" aria-pressed="false" aria-label="Toggle color theme">
+              Theme <i class="bi bi-moon-stars ms-1"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <section class="card shadow-sm mb-4">
-    <div class="card-body">
-      <h2 class="h5 mb-3">Settings</h2>
-      <form id="settingsForm" novalidate>
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input id="username" class="form-control" required>
-          <div class="invalid-feedback">Username is required</div>
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-7">
+          <h1 class="display-6 mb-2">Welcome back, <span class="gradient-text">Ashana</span></h1>
+          <p class="lead text-secondary mb-3">Your personal profile, settings, and updates — neatly organized.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <div class="stat-pill">
+              <i class="bi bi-people"></i>
+              <div><span id="userCount" class="stat-num">0</span><small> users</small></div>
+            </div>
+            <div class="stat-pill">
+              <i class="bi bi-shield-check"></i>
+              <div><span class="stat-num">99.9%</span><small> uptime</small></div>
+            </div>
+            <div class="stat-pill">
+              <i class="bi bi-lightning"></i>
+              <div><span class="stat-num">Fast</span><small> experience</small></div>
+            </div>
+          </div>
         </div>
-
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone</label>
-          <input id="phone" class="form-control" required>
-          <div class="invalid-feedback">Phone is required</div>
+        <div class="col-md-5">
+          <div class="hero-card card shadow-sm">
+            <div class="card-body d-flex align-items-center gap-3">
+              <img class="avatar" src="https://avatars.mds.yandex.net/i?id=0e8e5432af0aa80f3182168e6530f089870e4182-12588376-images-thumbs&n=13" alt="Profile avatar" width="72" height="72">
+              <div class="flex-grow-1">
+                <h3 class="h6 mb-1">User</h3>
+                <div class="text-secondary small">Member since 2025</div>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge rounded-pill text-bg-primary">Pro</span>
+                  <span class="badge rounded-pill text-bg-light border">Verified</span>
+                </div>
+              </div>
+              <button id="openPopupBtn" class="btn btn-success btn-sm">Subscribe</button>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </header>
 
+  <main id="profile" class="container py-4">
+    <div class="row g-4">
+      <aside class="col-lg-4">
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h6 mb-3">Personalization</h2>
+            <div class="d-grid gap-2">
+              <button id="changeBgBtn" class="btn btn-outline-primary"><i class="bi bi-palette me-1"></i>Change Background</button>
+              <button id="themeToggleSide" class="btn btn-outline-secondary"><i class="bi bi-moon-stars me-1"></i>Toggle Theme</button>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex justify-content-between">
+              <span class="text-secondary small">Current time</span>
+              <span id="clock" class="fw-semibold small"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h6 mb-3">Contact</h2>
+            <ul class="list-unstyled small m-0">
+              <li class="mb-1"><i class="bi bi-envelope me-2"></i>support@ashana.hub</li>
+              <li class="mb-1"><i class="bi bi-geo me-2"></i>Astana, KZ</li>
+              <li><i class="bi bi-link-45deg me-2"></i>ashana.example</li>
+            </ul>
+          </div>
+        </section>
+      </aside>
+
+      <div class="col-lg-8">
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Settings</h2>
+            <form id="settingsForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="username" class="form-label">Username</label>
+                  <input id="username" class="form-control" required aria-required="true">
+                  <div class="invalid-feedback">Username is required</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input id="phone" class="form-control" required aria-required="true" placeholder="+7...">
+                  <div class="invalid-feedback">Phone is required</div>
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">Delivery Address</label>
+                  <input id="address" class="form-control" required aria-required="true" placeholder="Street, building, apt">
+                  <div class="invalid-feedback">Address is required</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input id="email" type="email" class="form-control" placeholder="you@example.com" required aria-required="true">
+                  <div class="invalid-feedback">Enter a valid email</div>
+                </div>
+                <div class="col-md-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input id="password" type="password" class="form-control" minlength="8" required aria-required="true">
+                  <div class="invalid-feedback">At least 8 characters</div>
+                </div>
+                <div class="col-md-3">
+                  <label for="confirm" class="form-label">Confirm Password</label>
+                  <input id="confirm" type="password" class="form-control" required aria-required="true">
+                  <div class="invalid-feedback">Passwords do not match</div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-2 mt-3">
+                <button type="submit" id="saveBtn" class="btn btn-success">Save</button>
+                <span id="spinner" class="spinner" hidden>Please wait…</span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="card shadow-sm mb-4" id="faq">
+          <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+              <h2 class="h5 mb-0">FAQ</h2>
+              <input type="text" id="searchInput" class="form-control ms-auto" style="max-width:360px" placeholder="Search FAQ (live & highlight)" aria-label="Search FAQ">
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q btn btn-link text-start w-100 px-0">How to change my address?</button>
+              <div class="faq-a">Open “Settings” → fill “Delivery Address” → Save changes.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q btn btn-link text-start w-100 px-0">How discounts work?</button>
+              <div class="faq-a">We apply promo codes automatically to eligible orders.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q btn btn-link text-start w-100 px-0">Can I cancel an order?</button>
+              <div class="faq-a">Yes, before it moves to “Processing”. Contact support.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q btn btn-link text-start w-100 px-0">What is the weather like?</button>
+              <div class="faq-a">The weather is sunny.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q btn btn-link text-start w-100 px-0">How to use jQuery?</button>
+              <div class="faq-a">You can use jQuery to manipulate the DOM.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card shadow-sm" id="contact">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+              <h2 class="h5 mb-1">Need help?</h2>
+              <div class="text-secondary small">Our team responds within 24 hours.</div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock text-secondary"></i>
+              <div id="clock" class="fw-semibold"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
+    <div class="popup-window" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <button id="closePopupBtn" class="btn-close popup-close" aria-label="Close"></button>
+      <h3 id="popupTitle" class="h5 mb-3">Subscribe to news</h3>
+      <form id="popupForm" novalidate>
         <div class="mb-3">
-          <label for="address" class="form-label">Delivery Address</label>
-          <input id="address" class="form-control" required>
-          <div class="invalid-feedback">Address is required</div>
+          <label for="popupEmail" class="form-label">Email</label>
+          <input id="popupEmail" type="email" class="form-control" required aria-required="true" placeholder="you@example.com">
+          <div class="invalid-feedback">Enter a valid email.</div>
         </div>
-
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input id="email" type="email" class="form-control" placeholder="you@example.com" required>
-          <div class="invalid-feedback">Enter a valid email</div>
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input id="password" type="password" class="form-control" minlength="8" required>
-          <div class="invalid-feedback">At least 8 characters</div>
-        </div>
-
-        <div class="mb-3">
-          <label for="confirm" class="form-label">Confirm Password</label>
-          <input id="confirm" type="password" class="form-control" required>
-          <div class="invalid-feedback">Passwords do not match</div>
-        </div>
-
-           <button type="submit" id="saveBtn" class="btn btn-success">Save</button>
-           <div id="spinner" class="spinner" style="display: none;">Please wait...</div>  
+        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
       </form>
     </div>
-  </section>
-
-  <section class="card shadow-sm mb-4" id="faq">
-    <div class="card-body">
-      <h2 class="h5 mb-3">FAQ</h2>
-      <div class="faq-item">
-        <button class="faq-q btn btn-link text-start w-100 px-0">How to change my address?</button>
-        <div class="faq-a">Open “Settings” → fill “Delivery Address” → Save changes.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q btn btn-link text-start w-100 px-0">How discounts work?</button>
-        <div class="faq-a">We apply promo codes automatically to eligible orders.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q btn btn-link text-start w-100 px-0">Can I cancel an order?</button>
-        <div class="faq-a">Yes, before it moves to “Processing”. Contact support.</div>
-      </div>
-       <div class="faq-item">
-        <button class="faq-q btn btn-link text-start w-100 px-0">What is the weather like?</button>
-         <div class="faq-a">The weather is sunny.</div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-q btn btn-link text-start w-100 px-0">How to use jQuery?</button>
-      <div class="faq-a">You can use jQuery to manipulate the DOM.</div>
-    </div>
-       <input type="text" id="searchInput" class="form-control" placeholder="Search FAQ" />
-       </div>
-  </section>
-
-  <section class="card shadow-sm mb-4">
-    <div class="card-body d-flex justify-content-between align-items-center">
-      <h2 class="h5 mb-0">Stay in touch</h2>
-      <button id="openPopupBtn" class="btn btn-success">Subscribe</button>
-      <div id="counter" class="counter">
-  <span id="userCount">0</span> users
-</div>
-    </div>
-  </section>
-
-  <section class="card shadow-sm mb-4">
-    <div class="card-body d-flex justify-content-between align-items-center">
-      <h2 class="h5 mb-0">Background</h2>
-      <button id="changeBgBtn" class="btn btn-outline-primary">Change Background</button>
-    </div>
-  </section>
-
-  <section class="card shadow-sm mb-4">
-    <div class="card-body d-flex justify-content-between align-items-center">
-      <h2 class="h5 mb-0">Current Date & Time</h2>
-      <div id="clock" class="fw-semibold"></div>
-    </div>
-  </section>
-
-</main>
-
-<div id="popupOverlay" class="popup-overlay" aria-hidden="true">
-  <div class="popup-window" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-    <button id="closePopupBtn" class="btn-close popup-close"></button>
-    <h3 id="popupTitle" class="h5 mb-3">Subscribe to news</h3>
-    <form id="popupForm" novalidate>
-      <div class="mb-3">
-        <label for="popupEmail" class="form-label">Email</label>
-        <input id="popupEmail" type="email" class="form-control" required>
-        <div class="invalid-feedback">Enter a valid email.</div>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-    </form>
   </div>
-</div>
 
-<section class="card shadow-sm mb-4">
-  <div class="card-body d-flex flex-wrap gap-2 align-items-center">
-    <h2 class="h5 mb-0 me-auto">Interactive Controls</h2>
-     <div class="controls">
-  <button id="toggleThemeBtn" class="btn btn-dark">Toggle Theme</button> 
-    <button id="playSoundBtn" class="btn btn-secondary">Play Sound (S)</button>
-      <button id="shakeCardBtn" class="btn btn-warning">Animate Card</button>
-   </div>
-  </div>
-</section>
-
-<section class="card shadow-sm mb-4">
-  <div class="card-body">
-    <div class="d-flex align-items-center gap-2 mb-3">
-      <h2 class="h5 mb-0 me-2">Gallery</h2>
-      <select id="galleryFilter" class="form-select w-auto">
-        <option value="all">All</option>
-        <option value="food">Food</option>
-        <option value="drinks">Drinks</option>
-        <option value="dessert">Dessert</option>
-      </select>
-      <button id="shuffleBtn" class="btn btn-outline-primary">Shuffle (G)</button>
-    </div>
-    <div id="gallery" class="row g-3"></div>
-  </div>
-</section>
-   <script src="app.js"></script>
-
-
-<script src="app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
