@@ -69,10 +69,20 @@
   --bg: #f9f9fb;
   --card-bg: #fff;
   --text: #222;
+  --muted: #666;
   --border: #e0e0e0;
   --radius: 14px;
   --shadow: 0 2px 12px rgba(0,0,0,0.07);
   --font-main: 'Montserrat', 'Poppins', Arial, sans-serif;
+}
+
+/* Dark theme variable overrides when body has .dark-mode */
+body.dark-mode {
+  --bg: #0f1113;
+  --card-bg: #151516;
+  --text: #eee;
+  --muted: #bdbdbd;
+  --border: #323233;
 }
 
 * {
@@ -500,7 +510,7 @@ button:hover, .btn:hover, .sign-in-button:hover {
 }
 .member-left { flex: 0 0 110px; }
 .member-right { flex: 1; }
-.member-role { color: #666; font-weight: 600; margin-top: 6px; }
+.member-role { color: var(--muted); font-weight: 600; margin-top: 6px; }
 .member-fav { color: var(--primary); margin-top: 8px; }
 .member-card.hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
 
@@ -653,6 +663,8 @@ button:hover, .btn:hover, .sign-in-button:hover {
   z-index:2000;
 }
 
+.muted { color: var(--muted); }
+
 /* Scroll progress bar */
 .scroll-progress {
   position: fixed;
@@ -674,7 +686,7 @@ button:hover, .btn:hover, .sign-in-button:hover {
 .stats { display:flex; gap:18px; justify-content:center; margin:18px 0; }
 .stat { text-align:center; padding:12px; background:var(--card-bg); border-radius:12px; box-shadow:var(--shadow); min-width:100px; }
 .count-up { font-size:1.6rem; font-weight:700; color:var(--primary); }
-.stat-label { color:#666; margin-top:6px; font-weight:600; }
+.stat-label { color:var(--muted); margin-top:6px; font-weight:600; }
 
 /* Spinner inside button */
 .btn .spinner {
