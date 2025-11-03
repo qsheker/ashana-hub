@@ -1,32 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asxana Hub - Premium Food Experience</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles/theme.css">
-    <title>Asxana.hub</title>
     <style>
-        /* Progress Bar Styles */
+        :root {
+            --primary-color: #af0d0d;
+            --secondary-color: #e99b0b;
+            --accent-color: #e6d222;
+            --success-color: #28a745;
+            --light-bg: #ffffff;
+            --light-text: #333333;
+            --light-card: #f8f9fa;
+            --light-border: #dee2e6;
+            --dark-bg: #121212;
+            --dark-text: #f8f9fa;
+            --dark-card: #1e1e1e;
+            --dark-border: #444444;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            transition: var(--transition);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .dark-mode header {
+            background-color: var(--dark-card);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .dark-mode .navbar-links a {
+            color: var(--dark-text);
+        }
+
+        .navbar-links a:hover,
+        .navbar-links a.active {
+            color: var(--primary-color);
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--light-text);
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-mode .theme-toggle {
+            color: var(--dark-text);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            transform: rotate(30deg);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background-color: var(--light-card);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--light-border);
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+
+        .dark-mode .card {
+            background-color: var(--dark-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--dark-border);
+        }
+
+        .card h1, .card h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, rgba(175, 13, 13, 0.1) 0%, rgba(233, 155, 11, 0.1) 100%);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .dark-mode .hero-subtitle {
+            color: var(--dark-text);
+        }
+
+        /* Stats Section */
+        .stat-item {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        /* Food Items */
+        .food-item {
+            background-color: var(--light-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: 1px solid var(--light-border);
+            height: 100%;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .dark-mode .food-item {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--dark-border);
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .food-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .food-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .food-item p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .dark-mode .food-item p {
+            color: #aaa;
+        }
+
+        .btn-add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: #8a0a0a;
+            transform: scale(1.05);
+        }
+
+        /* Promo Code Section */
+        .promo-code {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .promo-code strong {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .copy-btn.copied {
+            background: var(--success-color);
+        }
+
+        /* Newsletter Form */
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .dark-mode .newsletter-input {
+            background-color: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(175, 13, 13, 0.2);
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #8a0a0a;
+            transform: translateY(-2px);
+        }
+
+        .btn-subscribe:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Clock Section */
+        #clock {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Reviews Section */
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .dark-mode blockquote {
+            color: #aaa;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--light-card);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            transition: var(--transition);
+        }
+
+        .dark-mode .footer {
+            background-color: var(--dark-card);
+        }
+
+        /* Progress Bar */
         #scroll-progress {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #ffa500, #32cd32);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
             z-index: 9999;
             transition: width 0.3s ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        /* Notification Toast */
+        /* Toast Notification */
         #toast {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #28a745;
+            background: var(--success-color);
             color: white;
             padding: 15px 25px;
             border-radius: 8px;
@@ -35,6 +429,7 @@
             opacity: 0;
             transition: all 0.3s ease;
             z-index: 10000;
+            font-weight: 500;
         }
 
         #toast.show {
@@ -47,7 +442,7 @@
             width: 20px;
             height: 20px;
             border: 2px solid #f3f3f3;
-            border-top: 2px solid #007bff;
+            border-top: 2px solid var(--primary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             display: inline-block;
@@ -57,55 +452,6 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        /* Stats Section */
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .stat-item {
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #ff6b6b;
-            display: block;
-        }
-
-        /* Promo Code Section */
-        .promo-code {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .copy-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .copy-btn.copied {
-            background: #28a745;
         }
 
         /* Shake animation for food items */
@@ -118,6 +464,29 @@
         .shake {
             animation: shake 0.3s ease-in-out;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,76 +497,105 @@
     <div id="toast"></div>
 
     <header>
-        <div class="navbar-container">
-            <div class="navbar-logo">AsxanaHub</div>
-            <nav class="navbar-links">
-                <a href="#about">About Us</a>
-                <a href="#menu">Best</a>
-                <a href="#reviews">Reviews</a>
-                <a href="menu.html">Menu</a>
-                <a href="cart.html">Cart</a>
-                <a href="auth.html">Login</a>
-                <a href="discounts.html">Discounts</a>
-                <a href="team.html">Team</a>
-                <a href="profile.html">Profile</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-logo" href="index.html">
+                        <!-- <i class="fas fa-utensils"></i> -->
+                        Asxana Hub
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#menu">Best Foods</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reviews">Reviews</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="menu.html">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cart.html">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="auth.html">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="discounts.html">Discounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="team.html">Team</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.html">Profile</a>
+                            </li>
+                        </ul>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <!-- Stats Section -->
-        <section class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">Our Achievements</h2>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" data-target="1500">0</span>
-                    <span>Happy Customers</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="250">0</span>
-                    <span>Menu Items</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" data-target="3">0</span>
-                    <span>Years Experience</span>
-                </div>
-            </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to Asxana Hub</h1>
+            <p class="hero-subtitle">Experience the finest culinary delights crafted with passion and the freshest ingredients</p>
         </section>
 
-        <section id="about" class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">About Us</h2>
-            <p>At Asxana.hub, we believe that food is more than just a meal — it is an experience. Our mission is to bring you delicious, fresh, and high-quality dishes that make every bite enjoyable.</p>
+        <!-- About Section -->
+        <section id="about" class="card">
+            <h2>About Us</h2>
+            <p>At Asxana Hub, we believe that food is more than just a meal — it is an experience. Our mission is to bring you delicious, fresh, and high-quality dishes that make every bite enjoyable.</p>
         </section>
 
-        <section id="menu" class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">Best Foods</h2>
-            <div class="food-list" style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
-                <a href="menu.html" style="text-decoration:none;">
-                    <div class="food-item card" style="width:180px;text-align:center;">
-                        <h3 style="color:var(--primary);font-weight:600;">Donerhub</h3>
+        <!-- Best Foods Section -->
+        <section id="menu" class="card">
+            <h2>Best Foods</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h3>Donerhub</h3>
                         <p>Juicy doner with our special sauce</p>
-                        <button class="btn btn-sm btn-outline-primary add-to-cart-btn">Add to Cart</button>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
                     </div>
-                </a>
-                <a href="menu.html" style="text-decoration:none;">
-                    <div class="food-item card" style="width:180px;text-align:center;">
-                        <h3 style="color:var(--primary);font-weight:600;">Vibeshake</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h3>Vibeshake</h3>
                         <p>Refreshing milkshake for every vibe</p>
-                        <button class="btn btn-sm btn-outline-primary add-to-cart-btn">Add to Cart</button>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
                     </div>
-                </a>
-                <a href="menu.html" style="text-decoration:none;">
-                    <div class="food-item card" style="width:180px;text-align:center;">
-                        <h3 style="color:var(--primary);font-weight:600;">MVP-burger</h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h3>MVP-burger</h3>
                         <p>Your first bite to success</p>
-                        <button class="btn btn-sm btn-outline-primary add-to-cart-btn">Add to Cart</button>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
-        <section class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">Special Offer</h2>
+        <!-- Promo Code Section -->
+        <section class="card">
+            <h2>Special Offer</h2>
             <div class="promo-code">
                 <div>
                     <strong>WELCOME15</strong> - Get 15% off your first order!
@@ -208,50 +606,76 @@
             </div>
         </section>
 
-        <section class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">Newsletter Subscription</h2>
-            <form id="newsletterForm">
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Enter your email" required>
+        <!-- Newsletter Section -->
+        <section class="card">
+            <h2>Newsletter Subscription</h2>
+            <form id="newsletterForm" class="row g-3">
+                <div class="col-md-8">
+                    <input type="email" class="form-control newsletter-input" placeholder="Enter your email" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submitBtn">
-                    <span class="btn-text">Subscribe</span>
-                </button>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100 btn-subscribe" id="submitBtn">
+                        <span class="btn-text">Subscribe</span>
+                    </button>
+                </div>
             </form>
         </section>
 
-        <section class="card shadow-sm mb-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <h2 class="h5 mb-0">Background</h2>
-                <button id="changeBgBtn" class="btn btn-outline-primary">Change Background</button>
-            </div>
-        </section>
 
-        <section class="card shadow-sm mb-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <h2 class="h5 mb-0">Current Date & Time</h2>
-                <div id="clock" class="fw-semibold"></div>
-            </div>
-        </section>
-
-        <section id="reviews" class="card shadow-sm mb-4">
-            <h2 class="h5 mb-3">Reviews</h2>
-            <blockquote>"Best burger in town!" – Alex</blockquote>
-            <blockquote>"Loved the doner, so fresh!" – Aida</blockquote>
-            <blockquote>"Tamak damdi koroche" – Aldiar</blockquote>
+        <!-- Reviews Section -->
+        <section id="reviews" class="card">
+            <h2>Customer Reviews</h2>
+            <blockquote>"Best burger in town! The quality is exceptional and the service is always friendly." – Alex</blockquote>
+            <blockquote>"Loved the doner, so fresh and flavorful! Will definitely order again." – Aida</blockquote>
+            <blockquote>"The MVP-burger lives up to its name. Absolutely delicious!" – Aldiar</blockquote>
         </section>
     </main>
 
     <footer class="footer">
-        <p>© 2025 Asxana.hub. All rights reserved.</p>
-        <p>by Almadi, Aldiyar, Nurgeldi, Aibek</p>
+        <div class="container">
+            <p>© 2025 Asxana Hub. All rights reserved.</p>
+            <p>by Almadi, Aldiyar, Nurgeldi, Aibek</p>
+        </div>
     </footer>
 
-    <script src="scripts/app.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
     <script>
-        $(document).ready(function() {
-            console.log("jQuery is ready!");
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
 
+        // Initialize page
+        $(document).ready(function() {
+            console.log("Asxana Hub is ready!");
+
+            // Scroll progress bar
             $(window).scroll(function() {
                 const windowHeight = $(window).height();
                 const documentHeight = $(document).height();
@@ -260,6 +684,7 @@
                 $('#scroll-progress').css('width', progress + '%');
             });
 
+            // Animated number counters
             function animateNumbers() {
                 $('.stat-number').each(function() {
                     const $this = $(this);
@@ -280,19 +705,21 @@
                 });
             }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateNumbers();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
+            
 
             observer.observe($('.stats-container')[0]);
 
+            // Newsletter form submission with validation
             $('#newsletterForm').submit(function(e) {
                 e.preventDefault();
+                
+                const email = $(this).find('input[type="email"]').val();
+                
+                // Email validation
+                if (!isValidEmail(email)) {
+                    showToast('Please enter a valid email address', 'error');
+                    return;
+                }
                 
                 const $submitBtn = $('#submitBtn');
                 const originalText = $submitBtn.find('.btn-text').text();
@@ -300,6 +727,7 @@
                 $submitBtn.prop('disabled', true);
                 $submitBtn.find('.btn-text').html('<div class="spinner"></div>Please wait...');
                 
+                // Simulate form submission
                 setTimeout(function() {
                     showToast('Successfully subscribed to newsletter!', 'success');
                     
@@ -309,9 +737,16 @@
                 }, 2000);
             });
 
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Toast notification function
             function showToast(message, type = 'success') {
                 const $toast = $('#toast');
-                $toast.removeClass('error warning').addClass(type);
+                $toast.removeClass('bg-danger bg-warning').addClass(type === 'error' ? 'bg-danger' : 'bg-success');
                 $toast.text(message).addClass('show');
                 
                 setTimeout(function() {
@@ -319,9 +754,9 @@
                 }, 3000);
             }
 
-            $('.add-to-cart-btn').click(function(e) {
+            // Add to cart functionality
+            $('.btn-add-to-cart').click(function(e) {
                 e.preventDefault();
-                e.stopPropagation();
                 
                 const $card = $(this).closest('.food-item');
                 const foodName = $card.find('h3').text();
@@ -332,6 +767,7 @@
                 showToast(`${foodName} added to cart!`, 'success');
             });
 
+            // Copy promo code functionality
             $('.copy-btn').click(function() {
                 const code = $(this).data('code');
                 const $btn = $(this);

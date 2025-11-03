@@ -1,90 +1,139 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('auth-form');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const errorMsg = document.getElementById('error-msg');
+// Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+     
+        // Form Submission
+        $('#loginForm').on('submit', function(e) {
+            e.preventDefault();
+            const btn = $('#submitBtn');
+            btn.prop('disabled', true);
+            btn.html('<i class="fas fa-spinner fa-spin"></i> Please wait...');
+            
+            // Form validation
+            const email = $('#Email').val();
+            const password = $('#Password').val();
+            let isValid = true;
+            
+            // Email validation
+            if (!email.match(/^\S+@\S+\.\S+$/)) {
+                $('#Email').css('border-color', 'red');
+                isValid = false;
+            } else {
+                $('#Email').css('border-color', '');
+            }
+            
+            // Password validation
+            if (password.length < 6) {
+                $('#Password').css('border-color', 'red');
+                isValid = false;
+            } else {
+                $('#Password').css('border-color', '');
+            }
+            
+            if (!isValid) {
+                setTimeout(() => {
+                    btn.prop('disabled', false);
+                    btn.html('Sign in');
+                }, 1000);
+                return;
+            }
+            
+            // Simulate form submission
+            setTimeout(() => {
+                btn.prop('disabled', false);
+                btn.html('Sign in');
+                alert('Login successful!');
+            }, 2000);
+        });
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-    let errors = [];
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('Password');
+            const icon = this.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
 
-    if (!email.match(/^\S+@\S+\.\S+$/)) {
-      errors.push('Invalid email format.');
-    }
+        // Remember me functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById('Email');
+            const rememberCheckbox = document.getElementById('Remember');
 
-    if (password.length < 6) {
-      errors.push('Password must be at least 6 characters.');
-    }
+            if (localStorage.getItem('rememberedEmail')) {
+                emailInput.value = localStorage.getItem('rememberedEmail');
+                rememberCheckbox.checked = true;
+            }
 
-    if (errors.length > 0) {
-      errorMsg.innerHTML = errors.join('<br>');
-    } else {
-      errorMsg.innerHTML = '';
-      alert('Login successful!');
-    }
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
-  const hours = new Date().getHours();
+            rememberCheckbox.addEventListener('change', () => {
+                if (rememberCheckbox.checked) {
+                    localStorage.setItem('rememberedEmail', emailInput.value);
+                } else {
+                    localStorage.removeItem('rememberedEmail');
+                }
+            });
+        });
 
-  const greeting = document.createElement('div'); // use div for styling
-  greeting.style.padding = '12px 20px';
-  greeting.style.margin = '20px auto';
-  greeting.style.maxWidth = '400px';
-  greeting.style.borderRadius = '8px';
-  greeting.style.textAlign = 'center';
-  greeting.style.fontSize = '1.1rem';
-  greeting.style.fontWeight = '500';
-  greeting.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-  
-switch (true) {
-  case (hours < 12):
-    greeting.textContent = "Good morning! Ready for breakfast?";
-    greeting.style.backgroundColor = '#FFF9C4';
-    break;
-  case (hours < 18):
-    greeting.textContent = "Good afternoon! Feeling hungry?";
-    greeting.style.backgroundColor = '#BBDEFB';
-    break;
-  default:
-    greeting.textContent = "Good evening! Late dinner time?";
-    greeting.style.backgroundColor = '#D7CCC8';
-    break;
-}
-
-
-const main = document.querySelector('main');
-  if (main) main.prepend(greeting);
-});
-
-const passwordField = document.getElementById('Password');
-const toggleBtn = document.createElement('button');
-toggleBtn.textContent = 'Show';
-toggleBtn.type = 'button';
-toggleBtn.addEventListener('click', () => {
-  const isPassword = passwordField.type === 'password';
-  passwordField.type = isPassword ? 'text' : 'password';
-  toggleBtn.textContent = isPassword ? 'Hide' : 'Show';
-});
-passwordField.parentNode.insertBefore(toggleBtn, passwordField.nextSibling);
-
-
-
-const emailInput = document.getElementById('Email');
-const rememberCheckbox = document.getElementById('Remember');
-
-if (localStorage.getItem('rememberedEmail')) {
-  emailInput.value = localStorage.getItem('rememberedEmail');
-  rememberCheckbox.checked = true;
-}
-
-remember.addEventListener('change', () => {
-  if (rememberCheckbox.checked) {
-    localStorage.setItem('rememberedEmail', emailInput.value);
-  } else {
-    localStorage.removeItem('rememberedEmail');
-  }
-});
+        // Dynamic greeting
+        document.addEventListener('DOMContentLoaded', () => {
+            const hours = new Date().getHours();
+            const greeting = document.createElement('div');
+            greeting.className = 'greeting';
+            
+            switch (true) {
+                case (hours < 12):
+                    greeting.textContent = "Good morning! Ready for breakfast?";
+                    greeting.style.backgroundColor = '#FFF9C4';
+                    greeting.style.color = '#333';
+                    break;
+                case (hours < 18):
+                    greeting.textContent = "Good afternoon! Feeling hungry?";
+                    greeting.style.backgroundColor = '#BBDEFB';
+                    greeting.style.color = '#333';
+                    break;
+                default:
+                    greeting.textContent = "Good evening! Late dinner time?";
+                    greeting.style.backgroundColor = '#D7CCC8';
+                    greeting.style.color = '#333';
+                    break;
+            }
+            
+            // Adjust greeting colors for dark mode
+            if (document.body.classList.contains('dark-mode')) {
+                greeting.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+            }
+            
+            const main = document.querySelector('main');
+            if (main) main.prepend(greeting);
+        });
