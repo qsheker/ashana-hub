@@ -79,6 +79,10 @@
       transition: color 0.3s ease;
     }
 
+    .navbar-links a:hover {
+        color: var(--primary-color);
+    }
+
     .navbar-links a::after {
       content: "";
       position: absolute;
@@ -284,7 +288,7 @@
         <a href="cart.html">Cart</a>
         <a href="auth.html">Login</a>
         <a href="discounts.html">Discounts</a>
-        <a href="team.html" class="active">Team</a>
+        <a href="team.html" class="active" style="color: var(--primary-color);">Team</a>
         <a href="profile.html">Profile</a>
       </nav>
       <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
