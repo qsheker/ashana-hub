@@ -1,8 +1,8 @@
 :root {
-  --brand: #b31b53;       
-  --brand-dark: #8f1543;
+  --brand: #7b001c;       
+  --brand-dark: #520012;   
   --bg: #ffffff;
-  --bg-light: #f9f9f9;
+  --bg-light: #fafafa;
   --text: #1c1f24;
   --muted: #6b7280;
   --card: #ffffff;
@@ -14,13 +14,13 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #121212;
+  --bg: #0f0f0f;
   --bg-light: #1b1b1b;
   --card: #1f1f1f;
-  --text: #eaeaea;
-  --muted: #b0b0b0;
-  --line: #333;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  --text: #f2f2f2;
+  --muted: #aaaaaa;
+  --line: #2d2d2d;
+  --shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
 html, body {
@@ -28,8 +28,6 @@ html, body {
   color: var(--text);
   font-family: var(--font-main);
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -57,14 +55,14 @@ a:hover {
 .nav-link {
   color: var(--text) !important;
   font-weight: 500;
-  transition: all 0.2s ease;
   border-radius: var(--radius);
+  transition: all 0.2s ease;
 }
 .nav-link.active {
   color: var(--brand) !important;
 }
 .nav-link:hover {
-  background: rgba(179, 27, 83, 0.08);
+  background: rgba(123, 0, 28, 0.08);
   color: var(--brand) !important;
 }
 
@@ -78,7 +76,7 @@ a:hover {
 }
 
 .hero {
-  background: linear-gradient(90deg, #fff5f5, #fff);
+  background: linear-gradient(90deg, #fff3f4, #ffffff);
   border-radius: var(--radius);
   margin: 1rem auto 2rem;
   padding: 2.5rem 1rem;
@@ -170,7 +168,7 @@ a:hover {
   max-height: 180px;
 }
 mark.highlight {
-  background: #ffe9a0;
+  background: #ffe6a0;
   padding: 0 .2em;
   border-radius: .2em;
 }
@@ -214,10 +212,7 @@ mark.highlight {
 }
 .form-control:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px rgba(179,27,83,0.1);
-}
-.invalid-feedback {
-  font-size: 0.9rem;
+  box-shadow: 0 0 0 3px rgba(123, 0, 28, 0.15);
 }
 
 .stat-pill {
