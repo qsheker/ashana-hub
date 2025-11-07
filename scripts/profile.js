@@ -7,16 +7,12 @@ $(function(){
   const initial = (saved==='light'||saved==='dark') ? saved : (prefersDark ? 'dark' : 'light');
   $root.attr('data-theme', initial);
   $('#themeToggle').attr('aria-pressed', String(initial==='dark'));
-  // Maintain backward-compatible body class for pages that use .dark-mode selectors
-  if (initial === 'dark') document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode');
 
   function toggleTheme(){
     const now = $root.attr('data-theme')==='dark' ? 'light' : 'dark';
     $root.attr('data-theme', now);
     localStorage.setItem(KEY, now);
     $('#themeToggle,#themeToggleSide').attr('aria-pressed', String(now==='dark'));
-    // keep body.dark-mode in sync for pages using that selector
-    if (now === 'dark') document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode');
   }
   $('#themeToggle, #themeToggleSide').on('click', toggleTheme);
 
