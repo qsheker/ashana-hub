@@ -1,212 +1,576 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ashana Hub — Profile</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/styles/profile.css"/>
+  <style>
+    :root {
+      --primary-color: #af0d0d;
+      --secondary-color: #e99b0b;
+      --accent-color: #e6d222;
+      --success-color: #28a745;
+      --light-bg: #ffffff;
+      --light-text: #333333;
+      --light-card: #f8f9fa;
+      --light-border: #dee2e6;
+      --dark-bg: #121212;
+      --dark-text: #f8f9fa;
+      --dark-card: #1e1e1e;
+      --dark-border: #444444;
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      transition: var(--transition);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    *.dark-mode {
+       background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    /* Header / Navbar как на discount / Asxana */
+    header {
+      background-color: var(--light-bg);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .dark-mode header {
+      background-color: var(--dark-card);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: var(--light-text);
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .dark-mode .navbar-links a {
+      color: var(--dark-text);
+    }
+
+    .navbar-links a:hover,
+    .navbar-links a.active {
+      color: var(--primary-color);
+    }
+
+    .navbar-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .navbar-links a:hover::after,
+    .navbar-links a.active::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--light-text);
+      transition: var(--transition);
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dark-mode .theme-toggle {
+      color: var(--dark-text);
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      transform: rotate(30deg);
+    }
+
+    .dark-mode .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Main Layout */
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Hero, как на Asxana */
+    .hero-section {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, rgba(175, 13, 13, 0.1) 0%, rgba(233, 155, 11, 0.1) 100%);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--light-text);
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+
+    .dark-mode .hero-subtitle {
+      color: var(--dark-text);
+    }
+
+    /* Cards (Profile, Settings, FAQ) */
+    .card {
+      background-color: var(--light-card);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 1.75rem;
+      transition: var(--transition);
+      border: 1px solid var(--light-border);
+      margin-bottom: 1.5rem;
+    }
+
+    .dark-mode .card {
+      background-color: var(--dark-card);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--dark-border);
+      color: var(--light-card);
+    }
+  .dark-mode ::placeholder {
+      color: #ddddddbb;
+
+  }
+    .card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+
+    /* Кнопки */
+    .btn-primary,
+    .btn-success {
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover,
+    .btn-success:hover {
+      background-color: #8a0a0a;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-secondary {
+      border-radius: 8px;
+      border-color: var(--light-border);
+      color: #666;
+    }
+
+    .dark-mode .btn-outline-secondary {
+      border-color: var(--dark-border);
+      color: #ddd;
+    }
+
+    .btn-outline-secondary:hover {
+      background-color: var(--light-border);
+    }
+
+    .dark-mode .btn-outline-secondary:hover {
+      background-color: #333;
+    }
+
+    /* Формы */
+    .form-control {
+      border-radius: 8px;
+      border: 1px solid var(--light-border);
+      background-color: var(--light-bg);
+      transition: var(--transition);
+    }
+
+    .dark-mode .form-control {
+      background-color: var(--dark-bg);
+      border: 1px solid var(--dark-border);
+      color: var(--dark-text);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(175, 13, 13, 0.2);
+    }
+
+    /* Personalization pill style */
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--light-border);
+      background-color: var(--light-bg);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .stat-pill {
+      background-color: var(--dark-bg);
+      border-color: var(--dark-border);
+    }
+
+    .stat-pill i {
+      color: var(--primary-color);
+      margin-right: 0.4rem;
+    }
+
+    /* FAQ */
+    .faq-item + .faq-item {
+      border-top: 1px solid var(--light-border);
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+    }
+
+    .dark-mode .faq-item + .faq-item {
+      border-top: 1px solid var(--dark-border);
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: var(--primary-color);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #666;
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+    }
+
+    .dark-mode .faq-a {
+      color: #aaa;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 180px;
+    }
+
+    /* Поиск по FAQ */
+    #searchInput {
+      max-width: 360px;
+      border-radius: 999px;
+    }
+
+    mark.highlight {
+      background: #ffe6a0;
+      padding: 0 .2em;
+      border-radius: .2em;
+    }
+
+    /* Popup (Subscribe) */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1050;
+    }
+
+    .popup-overlay.show {
+      display: flex;
+    }
+
+    .popup-window {
+      background: var(--light-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .dark-mode .popup-window {
+      background-color: var(--dark-card);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      background: none;
+      border: none;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--light-card);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: auto;
+      transition: var(--transition);
+    }
+
+    .dark-mode .footer {
+      background-color: var(--dark-card);
+    }
+
+    
+        /* Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .navbar-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
-  <div id="progress-bar-container" aria-hidden="true">
-    <div id="progress-bar"></div>
-  </div>
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
-        <span class="brand-dot"></span> Ashana Hub
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-        <span class="navbar-toggler-icon"></span>
+   <div id="scroll-progress"></div>
+  <!-- Header в стиле Asxana / Discounts -->
+  <header>
+    <div class="navbar-container">
+      <div class="navbar-logo">Ashana Hub</div>
+      <nav class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="cart.html">Cart</a>
+        <a href="auth.html">Login</a>
+        <a href="discounts.html">Discounts</a>
+        <a href="team.html">Team</a>
+        <a href="profile.html" class="active">Profile</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
       </button>
-      <div id="nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="menu.html" class="active">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-          <li class="nav-item"><a class="nav-link" href="auth.html">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="discounts.html">Discounts</a></li>
-          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#profile">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-          <li class="nav-item">
-            <button id="themeToggle" class="btn btn-outline-secondary btn-sm" aria-pressed="false" aria-label="Toggle color theme">
-              Theme <i class="bi bi-moon-stars ms-1"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-7">
-          <h1 class="display-6 mb-2">Welcome back, <span class="gradient-text">Ashana</span></h1>
-          <p class="lead text-secondary mb-3">Your personal profile, settings, and updates — neatly organized.</p>
-          <div class="d-flex flex-wrap gap-3">
-            <div class="stat-pill">
-              <i class="bi bi-people"></i>
-              <div><span id="userCount" class="stat-num">0</span><small> users</small></div>
-            </div>
-            <div class="stat-pill">
-              <i class="bi bi-shield-check"></i>
-              <div><span class="stat-num">99.9%</span><small> uptime</small></div>
-            </div>
-            <div class="stat-pill">
-              <i class="bi bi-lightning"></i>
-              <div><span class="stat-num">Fast</span><small> experience</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="hero-card card shadow-sm">
-            <div class="card-body d-flex align-items-center gap-3">
-              <img class="avatar" src="https://avatars.mds.yandex.net/i?id=0e8e5432af0aa80f3182168e6530f089870e4182-12588376-images-thumbs&n=13" alt="Profile avatar" width="72" height="72">
-              <div class="flex-grow-1">
-                <h3 class="h6 mb-1">User</h3>
-                <div class="text-secondary small">Member since 2025</div>
-                <div class="d-flex flex-wrap gap-2 mt-2">
-                  <span class="badge rounded-pill text-bg-primary">Pro</span>
-                  <span class="badge rounded-pill text-bg-light border">Verified</span>
-                </div>
-              </div>
-              <button id="openPopupBtn" class="btn btn-success btn-sm">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </header>
 
-  <main id="profile" class="container py-4">
+  <main>
+    <!-- Hero -->
+    <section class="hero-section">
+      <h1 class="hero-title">Welcome back, <span style="color: var(--secondary-color);">User</span></h1>
+      <p class="hero-subtitle">
+        Manage your personal data, delivery settings and see quick tips — all in one place.
+      </p>
+    </section>
+
     <div class="row g-4">
+      <!-- Левая колонка: персонализация + контакты -->
       <aside class="col-lg-4">
-        <section class="card shadow-sm mb-4">
-          <div class="card-body">
-            <h2 class="h6 mb-3">Personalization</h2>
-            <div class="d-grid gap-2">
-              <button id="changeBgBtn" class="btn btn-outline-primary"><i class="bi bi-palette me-1"></i>Change Background</button>
-              <button id="themeToggleSide" class="btn btn-outline-secondary"><i class="bi bi-moon-stars me-1"></i>Toggle Theme</button>
-            </div>
-            <hr class="my-3">
-            <div class="d-flex justify-content-between">
-              <span class="text-secondary small">Current time</span>
-              <span id="clock" class="fw-semibold small"></span>
-            </div>
+        <section class="card">
+          <h2>Personalization</h2>
+          <div class="d-grid gap-2 mb-3">
+            <button id="changeBgBtn" class="btn btn-outline-secondary">
+              <i class="fas fa-palette me-1"></i>Change Background
+            </button>
+            <button id="themeToggleSide" class="btn btn-outline-secondary">
+              <i class="fas fa-moon me-1"></i>Toggle Theme
+            </button>
+          </div>
+
+          <div class="stat-pill">
+            <span><i class="fas fa-clock"></i> Current time</span>
+            <span id="clock" class="fw-semibold small"></span>
           </div>
         </section>
 
-        <section class="card shadow-sm">
-          <div class="card-body">
-            <h2 class="h6 mb-3">Contact</h2>
-            <ul class="list-unstyled small m-0">
-              <li class="mb-1"><i class="bi bi-envelope me-2"></i>support@ashana.hub</li>
-              <li class="mb-1"><i class="bi bi-geo me-2"></i>Astana, KZ</li>
-              <li><i class="bi bi-link-45deg me-2"></i>ashana.example</li>
-            </ul>
-          </div>
+        <section class="card">
+          <h2>Contact</h2>
+          <ul class="list-unstyled small m-0">
+            <li class="mb-1"><i class="fas fa-envelope me-2"></i>support@ashana.hub</li>
+            <li class="mb-1"><i class="fas fa-location-dot me-2"></i>Astana, KZ</li>
+            <li><i class="fas fa-link me-2"></i><a href="./index.html" target="_blank" rel="noopener noreferrer">ashana.example</a></li>
+          </ul>
         </section>
       </aside>
 
+      <!-- Правая колонка: настройки + FAQ -->
       <div class="col-lg-8">
-        <section class="card shadow-sm mb-4">
-          <div class="card-body">
-            <h2 class="h5 mb-3">Settings</h2>
-            <form id="settingsForm" novalidate>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="username" class="form-label">Username</label>
-                  <input id="username" class="form-control" required aria-required="true">
-                  <div class="invalid-feedback">Username is required</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Phone</label>
-                  <input id="phone" class="form-control" required aria-required="true" placeholder="+7...">
-                  <div class="invalid-feedback">Phone is required</div>
-                </div>
-                <div class="col-12">
-                  <label for="address" class="form-label">Delivery Address</label>
-                  <input id="address" class="form-control" required aria-required="true" placeholder="Street, building, apt">
-                  <div class="invalid-feedback">Address is required</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label">Email</label>
-                  <input id="email" type="email" class="form-control" placeholder="you@example.com" required aria-required="true">
-                  <div class="invalid-feedback">Enter a valid email</div>
-                </div>
-                <div class="col-md-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input id="password" type="password" class="form-control" minlength="8" required aria-required="true">
-                  <div class="invalid-feedback">At least 8 characters</div>
-                </div>
-                <div class="col-md-3">
-                  <label for="confirm" class="form-label">Confirm Password</label>
-                  <input id="confirm" type="password" class="form-control" required aria-required="true">
-                  <div class="invalid-feedback">Passwords do not match</div>
-                </div>
+        <!-- Settings -->
+        <section class="card">
+          <h2>Settings</h2>
+          <form id="settingsForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input id="username" class="form-control" required aria-required="true">
+                <div class="invalid-feedback">Username is required</div>
               </div>
-              <div class="d-flex align-items-center gap-2 mt-3">
-                <button type="submit" id="saveBtn" class="btn btn-success">Save</button>
-                <span id="spinner" class="spinner" hidden>Please wait…</span>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">Phone</label>
+                <input id="phone" class="form-control" required aria-required="true" placeholder="+7...">
+                <div class="invalid-feedback">Phone is required</div>
               </div>
-            </form>
-          </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Delivery Address</label>
+                <input id="address" class="form-control" required aria-required="true" placeholder="Street, building, apt">
+                <div class="invalid-feedback">Address is required</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="email" class="form-control" placeholder="you@example.com" required aria-required="true">
+                <div class="invalid-feedback">Enter a valid email</div>
+              </div>
+              <div class="col-md-3">
+                <label for="password" class="form-label">Password</label>
+                <input id="password" type="password" class="form-control" minlength="8" required aria-required="true">
+                <div class="invalid-feedback">At least 8 characters</div>
+              </div>
+              <div class="col-md-3">
+                <label for="confirm" class="form-label">Confirm Password</label>
+                <input id="confirm" type="password" class="form-control" required aria-required="true">
+                <div class="invalid-feedback">Passwords do not match</div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-2 mt-3">
+              <button type="submit" id="saveBtn" class="btn btn-success">Save</button>
+              <span id="spinner" class="spinner-border spinner-border-sm text-danger" role="status" hidden></span>
+            </div>
+          </form>
         </section>
 
-        <section class="card shadow-sm mb-4" id="faq">
-          <div class="card-body">
-            <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
-              <h2 class="h5 mb-0">FAQ</h2>
-              <input type="text" id="searchInput" class="form-control ms-auto" style="max-width:360px" placeholder="Search FAQ (live & highlight)" aria-label="Search FAQ">
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q btn btn-link text-start w-100 px-0">How to change my address?</button>
-              <div class="faq-a">Open “Settings” → fill “Delivery Address” → Save changes.</div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q btn btn-link text-start w-100 px-0">How discounts work?</button>
-              <div class="faq-a">We apply promo codes automatically to eligible orders.</div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q btn btn-link text-start w-100 px-0">Can I cancel an order?</button>
-              <div class="faq-a">Yes, before it moves to “Processing”. Contact support.</div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q btn btn-link text-start w-100 px-0">What is the weather like?</button>
-              <div class="faq-a">The weather is sunny.</div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q btn btn-link text-start w-100 px-0">How to use jQuery?</button>
-              <div class="faq-a">You can use jQuery to manipulate the DOM.</div>
-            </div>
+        <!-- FAQ -->
+        <section class="card" id="faq">
+          <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+            <h2 class="mb-0">FAQ</h2>
+            <input type="text" id="searchInput" class="form-control ms-auto" placeholder="Search FAQ (live & highlight)" aria-label="Search FAQ">
           </div>
-        </section>
 
-        <section class="card shadow-sm" id="contact">
-          <div class="card-body d-flex justify-content-between align-items-center">
-            <div>
-              <h2 class="h5 mb-1">Need help?</h2>
-              <div class="text-secondary small">Our team responds within 24 hours.</div>
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-clock text-secondary"></i>
-              <div id="clock" class="fw-semibold"></div>
-            </div>
+          <div class="faq-item">
+            <button class="faq-q">How to change my address?</button>
+            <div class="faq-a">Open “Settings” → fill “Delivery Address” → Save changes.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How discounts work?</button>
+            <div class="faq-a">We apply promo codes automatically to eligible orders.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Can I cancel an order?</button>
+            <div class="faq-a">Yes, before it moves to “Processing”. Contact support.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">What is the weather like?</button>
+            <div class="faq-a">The weather is sunny.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">How to use jQuery?</button>
+            <div class="faq-a">You can use jQuery to manipulate the DOM.</div>
           </div>
         </section>
       </div>
     </div>
   </main>
 
+  <footer class="footer">
+    <p>© 2025 Ashana Hub. All rights reserved.</p>
+  </footer>
+
+  <!-- Popup Subscribe -->
   <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
     <div class="popup-window" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
       <button id="closePopupBtn" class="btn-close popup-close" aria-label="Close"></button>
@@ -220,9 +584,185 @@
         <button type="submit" class="btn btn-primary w-100">Subscribe</button>
       </form>
     </div>
-  </div>d
+  </div>
 
-  <script src="./scripts/profile.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+       // Scroll progress bar
+            $(window).scroll(function() {
+                const windowHeight = $(window).height();
+                const documentHeight = $(document).height();
+                const scrollTop = $(window).scrollTop();
+                const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+                $('#scroll-progress').css('width', progress + '%');
+            });
+    // === Тема (такая же логика, как на Asxana / Discounts) ===
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeToggleSide = document.getElementById('themeToggleSide');
+
+    function applyThemeFromStorage() {
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      applyThemeFromStorage();
+    }
+
+    applyThemeFromStorage();
+    themeToggle.addEventListener('click', toggleTheme);
+    if (themeToggleSide) {
+      themeToggleSide.addEventListener('click', toggleTheme);
+    }
+
+    // Часы
+    function updateClock() {
+      const el = document.getElementById('clock');
+      if (!el) return;
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      el.textContent = hh + ':' + mm;
+    }
+    updateClock();
+    setInterval(updateClock, 60000);
+
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
+      });
+    });
+
+    // Поиск по FAQ + подсветка
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const kw = searchInput.value.trim().toLowerCase();
+        document.querySelectorAll('.faq-item').forEach(item => {
+          const q = item.querySelector('.faq-q');
+          const a = item.querySelector('.faq-a');
+          const text = (q.textContent + ' ' + a.textContent).toLowerCase();
+          item.style.display = text.includes(kw) ? '' : 'none';
+
+          // убираем старый <mark>
+          q.innerHTML = q.textContent;
+          if (kw && q.textContent.toLowerCase().includes(kw)) {
+            const re = new RegExp('(' + kw + ')', 'ig');
+            q.innerHTML = q.textContent.replace(re, '<mark class="highlight">$1</mark>');
+          }
+        });
+      });
+    }
+
+    // Простейшая валидация settingsForm (пример)
+    const settingsForm = document.getElementById('settingsForm');
+    if (settingsForm) {
+      settingsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+
+        settingsForm.querySelectorAll('input[required]').forEach(input => {
+          if (!input.value.trim()) {
+            input.classList.add('is-invalid');
+            valid = false;
+          } else {
+            input.classList.remove('is-invalid');
+          }
+        });
+
+        const email = document.getElementById('email');
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          email.classList.add('is-invalid');
+          valid = false;
+        }
+
+        const pass = document.getElementById('password');
+        const confirm = document.getElementById('confirm');
+        if (pass && confirm && pass.value !== confirm.value) {
+          confirm.classList.add('is-invalid');
+          valid = false;
+        } else if (confirm) {
+          confirm.classList.remove('is-invalid');
+        }
+
+        if (!valid) return;
+
+        const spinner = document.getElementById('spinner');
+        spinner.hidden = false;
+        setTimeout(() => {
+          spinner.hidden = true;
+          alert('Settings saved!');
+        }, 1000);
+        settingsForm.reset();
+      });
+    }
+
+    // Popup subscribe
+    const openPopupBtn = document.getElementById('openPopupBtn');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const popupForm = document.getElementById('popupForm');
+
+    // Если решишь добавить кнопку "Subscribe" где-то, можно будет открыть попап:
+    if (openPopupBtn && popupOverlay) {
+      openPopupBtn.addEventListener('click', () => {
+        popupOverlay.classList.add('show');
+      });
+    }
+    if (closePopupBtn && popupOverlay) {
+      closePopupBtn.addEventListener('click', () => {
+        popupOverlay.classList.remove('show');
+      });
+    }
+    if (popupOverlay) {
+      popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) popupOverlay.classList.remove('show');
+      });
+    }
+
+    if (popupForm) {
+      popupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('popupEmail');
+        if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          email.classList.add('is-invalid');
+          return;
+        }
+        email.classList.remove('is-invalid');
+        alert('Subscribed!');
+        popupOverlay.classList.remove('show');
+        popupForm.reset();
+      });
+    }
+
+    // Change background (просто демонстрация)
+    const changeBgBtn = document.getElementById('changeBgBtn');
+    if (changeBgBtn) {
+      changeBgBtn.addEventListener('click', () => {
+        document.body.style.backgroundImage =
+          'linear-gradient(135deg, rgba(175,13,13,0.08), rgba(233,155,11,0.08))';
+        setTimeout(() => {
+          document.body.style.backgroundImage = 'none';
+        }, 1500);
+      });
+    }
+  </script>
 </body>
 </html>

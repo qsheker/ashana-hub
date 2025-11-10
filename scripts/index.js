@@ -1,4 +1,5 @@
 class EventHandlers {
+        
     constructor() {
         this.currentLanguage = 'en';
         this.currentFilter = 'all';
