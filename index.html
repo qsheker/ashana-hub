@@ -563,40 +563,6 @@
             <p>At Asxana Hub, we believe that food is more than just a meal — it is an experience. Our mission is to bring you delicious, fresh, and high-quality dishes that make every bite enjoyable.</p>
         </section>
 
-        <!-- Best Foods Section -->
-        <section id="menu" class="card">
-            <h2>Best Foods</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="food-item">
-                        <h3>Donerhub</h3>
-                        <p>Juicy doner with our special sauce</p>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="food-item">
-                        <h3>Vibeshake</h3>
-                        <p>Refreshing milkshake for every vibe</p>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="food-item">
-                        <h3>MVP-burger</h3>
-                        <p>Your first bite to success</p>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Promo Code Section -->
         <section class="card">
             <h2>Special Offer</h2>
@@ -714,66 +680,41 @@
                 
                 $submitBtn.prop('disabled', true);
                 $submitBtn.find('.btn-text').html('<div class="spinner"></div>Please wait...');
-                
-                // Simulate form submission
-                setTimeout(function() {
-                    showToast('Successfully subscribed to newsletter!', 'success');
-                    
-                    $submitBtn.prop('disabled', false);
-                    $submitBtn.find('.btn-text').text(originalText);
+                  $submitBtn.find('.btn-text').text(originalText);
                     $('#newsletterForm')[0].reset();
                 }, 2000);
             });
 
-            // Email validation function
-            function isValidEmail(email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailRegex.test(email);
-            }
-
-            // Toast notification function
             function showToast(message, type = 'success') {
-                const $toast = $('#toast');
-                $toast.removeClass('bg-danger bg-warning').addClass(type === 'error' ? 'bg-danger' : 'bg-success');
-                $toast.text(message).addClass('show');
-                
-                setTimeout(function() {
-                    $toast.removeClass('show');
-                }, 3000);
-            }
+        const $toast = $('#toast');
+        $toast
+            .removeClass('bg-danger bg-success')
+            .addClass(type === 'error' ? 'bg-danger' : 'bg-success')
+            .text(message)
+            .addClass('show');
 
-            // Add to cart functionality
-            $('.btn-add-to-cart').click(function(e) {
-                e.preventDefault();
-                
-                const $card = $(this).closest('.food-item');
-                const foodName = $card.find('h3').text();
-                
-                $card.addClass('shake');
-                setTimeout(() => $card.removeClass('shake'), 300);
-                
-                showToast(`${foodName} added to cart!`, 'success');
-            });
+        setTimeout(() => $toast.removeClass('show'), 3000);
+    }
 
-            // Copy promo code functionality
-            $('.copy-btn').click(function() {
-                const code = $(this).data('code');
-                const $btn = $(this);
-                
-                navigator.clipboard.writeText(code).then(function() {
-                    $btn.addClass('copied');
-                    $btn.html('<i class="fas fa-check"></i> Copied!');
-                    showToast('Promo code copied to clipboard!', 'success');
-                    
-                    setTimeout(function() {
-                        $btn.removeClass('copied');
-                        $btn.html('<i class="far fa-copy"></i> Copy');
-                    }, 2000);
-                }).catch(function() {
-                    showToast('Failed to copy code', 'error');
-                });
-            });
+    // 🏷 Copy Promo Code Functionality
+    $('.copy-btn').on('click', function() {
+        const code = $(this).data('code');
+        const $btn = $(this);
+
+        navigator.clipboard.writeText(code).then(() => {
+            $btn.addClass('copied');
+            $btn.html('<i class="fas fa-check"></i> Copied!');
+            showToast('Promo code copied to clipboard!', 'success');
+
+            setTimeout(() => {
+                $btn.removeClass('copied');
+                $btn.html('<i class="far fa-copy"></i> Copy');
+            }, 2000);
+        }).catch(() => {
+            showToast('Failed to copy promo code', 'error');
         });
+    });
     </script>
 </body>
 </html>
+                  
