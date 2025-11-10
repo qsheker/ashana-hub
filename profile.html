@@ -447,6 +447,7 @@
       <button class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
       </button>
+      <button id="logoutBtn" class="btn btn-outline-secondary" style="margin-left:8px;">Logout</button>
     </div>
   </header>
 
@@ -603,6 +604,35 @@
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');
     const themeToggleSide = document.getElementById('themeToggleSide');
+
+    // Auth: ensure only logged-in users can see profile
+    (function checkProfileAuth() {
+      const cur = localStorage.getItem('currentUser');
+      if (!cur) {
+        // not logged in -> redirect to login
+        window.location.href = 'auth.html';
+        return;
+      }
+      try {
+        const user = JSON.parse(cur);
+        const heroName = document.querySelector('.hero-title span');
+        if (heroName && user && user.name) heroName.textContent = user.name;
+      } catch (e) {
+        // parse error: force logout
+        localStorage.removeItem('currentUser');
+        window.location.href = 'auth.html';
+      }
+    })();
+
+    // Logout button
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        // after logout send to login page
+        window.location.href = 'auth.html';
+      });
+    }
 
     function applyThemeFromStorage() {
       const currentTheme = localStorage.getItem('theme') || 'light';

@@ -194,8 +194,10 @@
 
     .food-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      /* Keep items a comfortable fixed card width and center them; prevents stretching when few items */
+      grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
       gap: 1.5rem;
+      justify-content: center;
     }
 
     .food-item {
@@ -310,33 +312,11 @@
       </div>
 
       <div class="food-list" id="foodList">
-        <div class="food-item">
-          <img src="https://images.unsplash.com/photo-1699728088614-7d1d4277414b?w=600" alt="Donerhub">
-          <h3>Donerhub - <i>3.99$</i></h3>
-          <p>Juicy doner with special cherry sauce.</p>
-          <button class="order-btn">Order Now</button>
-        </div>
+        <!-- Meals loaded from TheMealDB API will be rendered here -->
+      </div>
 
-        <div class="food-item">
-          <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400" alt="Startup Fries">
-          <h3>Startup Fries - <i>2.99$</i></h3>
-          <p>Crispy golden fries — sidekick to every idea.</p>
-          <button class="order-btn">Order Now</button>
-        </div>
-
-        <div class="food-item">
-          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="MVP Burger">
-          <h3>MVP Burger - <i>5.20$</i></h3>
-          <p>Soft bun, fresh veggies, and premium beef.</p>
-          <button class="order-btn">Order Now</button>
-        </div>
-
-        <div class="food-item">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="CodeCoffee">
-          <h3>CodeCoffee - <i>1.99$</i></h3>
-          <p>Strong coffee to fuel your coding sessions.</p>
-          <button class="order-btn">Order Now</button>
-        </div>
+      <div id="pagination" style="margin-top:16px;display:flex;gap:8px;align-items:center;justify-content:center;">
+        <!-- Pagination controls rendered here -->
       </div>
     </section>
   </main>
@@ -363,15 +343,10 @@
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
-    // Live search
-    const searchInput = document.getElementById('searchInput');
-    const foodItems = document.querySelectorAll('.food-item');
-    searchInput.addEventListener('input', () => {
-      const term = searchInput.value.toLowerCase();
-      foodItems.forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(term) ? '' : 'none';
-      });
-    });
+    // Load menu script (fetches meals and handles pagination)
+    const script = document.createElement('script');
+    script.src = 'scripts/menu.js';
+    document.body.appendChild(script);
   </script>
 </body>
 </html>
