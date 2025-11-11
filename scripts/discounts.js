@@ -123,19 +123,91 @@
                 button.addEventListener('click', function() {
                     const discountId = this.getAttribute('data-id');
                     const discount = discounts.find(d => d.id == discountId);
-                    
+                    if (!discount) return;
+
+                    // Add to cart using discounted price
+                    addToCartFromDiscount(discount, 1);
+
+                    // Show styled notification (reuse menu style)
+                    showNotification(`${discount.title} added to cart`, 'success');
+
                     // Visual feedback
                     this.innerHTML = '<i class="fas fa-check"></i> Added!';
                     this.style.backgroundColor = 'var(--success-color)';
-                    
+
                     setTimeout(() => {
                         this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
                         this.style.backgroundColor = '';
-                    }, 2000);
-                    
-                    console.log(`Added discount item ${discount.title} to cart`);
+                    }, 1200);
+
+                    console.log(`Added discount item ${discount.title} (discounted $${discount.discountedPrice}) to cart`);
                 });
             });
+        }
+
+        // Add a discount item into the cart stored in localStorage (asxanaCart)
+        function addToCartFromDiscount(discountItem, qty = 1) {
+            try {
+                const key = 'asxanaCart';
+                const raw = localStorage.getItem(key) || '[]';
+                const cart = JSON.parse(raw);
+                const idKey = discountItem.id || discountItem.title;
+                const idx = cart.findIndex(i => (i.id || i.name) == idKey);
+                const itemToSave = {
+                    id: discountItem.id,
+                    name: discountItem.title,
+                    description: discountItem.description,
+                    image: discountItem.image,
+                    // store discounted price
+                    price: Number(discountItem.discountedPrice),
+                    quantity: qty
+                };
+                if (idx >= 0) {
+                    // increase quantity
+                    cart[idx].quantity = (cart[idx].quantity || 1) + qty;
+                    // ensure price stored is the discounted price
+                    cart[idx].price = Number(discountItem.discountedPrice);
+                } else {
+                    cart.push(itemToSave);
+                }
+                localStorage.setItem(key, JSON.stringify(cart));
+
+                // Optionally update a cart counter in the UI if present
+                const cartCount = document.getElementById('cart-count');
+                if (cartCount) {
+                    const totalQty = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+                    cartCount.textContent = totalQty;
+                }
+            } catch (err) {
+                console.error('Failed to add discount item to cart', err);
+            }
+        }
+
+        // Reuse the styled slide-in notification used in menu.js
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : '#007bff'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 1000;
+                font-family: 'Montserrat', sans-serif;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 300);
+            }, 2200);
         }
 
         // Animated counters
