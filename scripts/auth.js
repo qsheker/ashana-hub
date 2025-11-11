@@ -2,16 +2,38 @@
 const authKey = 'currentUser';
 const usersKey = 'users';
 
+// Normalize users storage to an object map keyed by lowercased email.
+// For backwards compatibility this will accept either an array or an object
+// and always return an object: { 'email@domain': userObj }
 function getUsers() {
     try {
-        return JSON.parse(localStorage.getItem(usersKey) || '[]');
+        const raw = localStorage.getItem(usersKey);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+            // convert array -> map
+            const map = {};
+            parsed.forEach(u => {
+                try {
+                    if (u && u.email) map[u.email.toLowerCase()] = u;
+                } catch (e) { /* ignore malformed user */ }
+            });
+            return map;
+        }
+        if (parsed && typeof parsed === 'object') return parsed;
+        return {};
     } catch (e) {
-        return [];
+        return {};
     }
 }
 
+// Save as object map keyed by lowercased email
 function saveUsers(users) {
-    localStorage.setItem(usersKey, JSON.stringify(users));
+    try {
+        localStorage.setItem(usersKey, JSON.stringify(users || {}));
+    } catch (e) {
+        // ignore
+    }
 }
 
 function setCurrentUser(user) {
@@ -188,8 +210,8 @@ $(document).ready(function () {
             return;
         }
 
-        const users = getUsers();
-        const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    const users = getUsers();
+    const user = users[email.toLowerCase()] || null;
         setTimeout(() => {
             btn.prop('disabled', false);
             btn.html('Sign in');
@@ -259,7 +281,7 @@ $(document).ready(function () {
         } else { $('#ConfirmPassword').css('border-color', ''); }
 
         const users = getUsers();
-        if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+        if (users[email.toLowerCase()]) {
             const msgEl2 = $('#formMessage');
             msgEl2.removeClass('text-success').addClass('text-danger');
             msgEl2.text('An account with this email already exists. Try logging in.');
@@ -269,7 +291,7 @@ $(document).ready(function () {
         }
 
         const newUser = { name, email, password };
-        users.push(newUser);
+        users[email.toLowerCase()] = newUser;
         saveUsers(users);
         setCurrentUser({ name, email });
         setTimeout(() => {

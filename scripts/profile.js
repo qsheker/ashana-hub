@@ -230,7 +230,9 @@
       }
 
       const cleanedPhone = phone.replace(/[^+0-9]/g, '');
-      const emailKey = email || (username ? username.replace(/\s+/g, '_').toLowerCase() : ('user_' + Date.now()));
+      // Use lowercased email as the canonical key when possible
+      const emailKeyRaw = email || (username ? username.replace(/\s+/g, '_').toLowerCase() : ('user_' + Date.now()));
+      const emailKey = (typeof emailKeyRaw === 'string') ? emailKeyRaw.toLowerCase() : String(emailKeyRaw);
       const userData = {
         name: username,
         phone: cleanedPhone,
@@ -238,7 +240,9 @@
         address: { street, building, apartment },
         updatedAt: new Date().toISOString()
       };
-      if (password) userData.password = btoa(password); // demo only
+      // For demo app we store password in plain text so auth.js can compare directly.
+      // In a real app, never store plain passwords in localStorage — use a backend and hashing.
+      if (password) userData.password = password;
 
       if (spinner) spinner.hidden = false;
       if (saveBtn) saveBtn.disabled = true;
@@ -249,7 +253,7 @@
           users[emailKey] = userData;
           localStorage.setItem('users', JSON.stringify(users));
           // update currentUser to this user's data for compatibility
-          localStorage.setItem('currentUser', JSON.stringify(userData));
+          localStorage.setItem('currentUser', JSON.stringify({ name: userData.name, email: userData.email }));
           currentUserEmail = emailKey;
           currentUser = userData;
           if (msgBox) msgBox.innerHTML = '<div class="text-success">Settings saved successfully.</div>';
