@@ -1,0 +1,107 @@
+/* animations.css
+   Shared animation utilities used across the site.
+   - .btn-animate : subtle hover scale / shadow for buttons
+   - .img-hover   : image hover zoom / desaturate
+   - .icon-animate: hover rotate / click bounce for icons
+   - .typing      : CSS helper for typing cursor (used with small JS typer)
+
+   Keep animations respectful of prefers-reduced-motion.
+*/
+
+:root{
+  --anim-ease: cubic-bezier(.2,.9,.25,1);
+  --btn-scale: 1.04;
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root { --btn-scale: 1; }
+}
+
+/* Button animation utility
+   Add class="btn-animate" to any button or anchor to get a subtle scale + shadow on hover.
+*/
+.btn-animate {
+  transition: transform 220ms var(--anim-ease), box-shadow 220ms ease, background-color 180ms ease;
+  will-change: transform;
+}
+.btn-animate:hover,
+.btn-animate:focus {
+  transform: scale(var(--btn-scale));
+  box-shadow: var(--shadow-lg);
+}
+.btn-animate:active {
+  transform: scale(calc(var(--btn-scale) - 0.02));
+}
+
+/* Image hover
+   Add class="img-hover" to images. On hover they slightly zoom and remove grayscale.
+*/
+.img-hover{
+  display: inline-block;
+  transition: transform 300ms var(--anim-ease), filter 320ms ease, opacity 220ms ease;
+  transform-origin: center center;
+  will-change: transform, filter;
+  /* show smooth edges on rounded images */
+}
+.img-hover:hover, .img-hover:focus {
+  transform: scale(1.06);
+  filter: grayscale(0%) contrast(1.02);
+}
+.img-hover.grayscale {
+  filter: grayscale(80%);
+}
+
+/* Icon animations
+   Add class="icon-animate" to icons (font-awesome i elements or svg wrappers).
+   Hover rotates slightly; click will trigger a small bounce via JS toggling .clicked.
+*/
+.icon-animate{
+  display: inline-block;
+  transition: transform 260ms var(--anim-ease), color 200ms ease;
+  transform-origin: center center;
+}
+.icon-animate:hover{ transform: rotate(-12deg) scale(1.06); }
+.icon-animate.clicked{ animation: iconBounce 420ms var(--anim-ease); }
+
+@keyframes iconBounce{
+  0%{ transform: translateY(0) scale(1); }
+  30%{ transform: translateY(-8px) scale(1.08); }
+  60%{ transform: translateY(3px) scale(0.99); }
+  100%{ transform: translateY(0) scale(1); }
+}
+
+/* Button variants: utility to style primary buttons consistently */
+.btn-animate.primary{
+  background: linear-gradient(180deg,var(--primary-color), #8a0a0a);
+  color: #fff;
+  border: none;
+}
+.btn-animate.ghost{
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Typing animation helper
+   Use together with a tiny JS typer which progressively fills the element's text.
+*/
+.typing {
+  display: inline-block;
+  border-right: 2px solid rgba(0,0,0,0.12);
+  padding-right: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* caret color for dark mode */
+body.dark-mode .typing{ border-right-color: rgba(255,255,255,0.18); }
+
+/* Helper class to reduce motion (JS may add) */
+.reduced-motion *{ transition: none !important; animation: none !important; }
+
+/* small notification slide (used by animations.js sometimes) */
+.anim-notify{
+  animation: slideIn 360ms var(--anim-ease) both;
+}
+@keyframes slideIn{ from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0);} }

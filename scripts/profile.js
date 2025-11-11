@@ -269,11 +269,77 @@
   }
 
   // FAQ: accordion + live search
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      item.classList.toggle('open');
-    });
+  // FAQ: smooth accordion (height + opacity animation)
+  function animateFaqItem(item) {
+    const content = item.querySelector('.faq-a');
+    if (!content) return;
+    const isOpen = item.classList.contains('open');
+    if (isOpen) {
+      // collapse
+      const fullHeight = content.scrollHeight;
+      // set explicit height then animate to 0
+      content.style.maxHeight = fullHeight + 'px';
+      content.style.opacity = '1';
+      // force reflow
+      void content.offsetHeight;
+      content.style.transition = 'max-height 380ms cubic-bezier(.2,.8,.2,1), opacity 260ms ease';
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+      item.classList.remove('open');
+      // after transition, clear maxHeight
+      const onEnd = (e) => {
+        if (e.propertyName === 'max-height') {
+          content.style.display = '';
+          content.style.maxHeight = '';
+          content.style.transition = '';
+          content.removeEventListener('transitionend', onEnd);
+        }
+      };
+      content.addEventListener('transitionend', onEnd);
+    } else {
+      // expand
+      content.style.display = 'block';
+      // start from 0
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+      // force reflow
+      void content.offsetHeight;
+      const fullHeight = content.scrollHeight;
+      content.style.transition = 'max-height 420ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease';
+      content.style.maxHeight = fullHeight + 'px';
+      content.style.opacity = '1';
+      item.classList.add('open');
+      const onEnd = (e) => {
+        if (e.propertyName === 'max-height') {
+          // allow auto height after animation
+          content.style.maxHeight = 'none';
+          content.style.transition = '';
+          content.removeEventListener('transitionend', onEnd);
+        }
+      };
+      content.addEventListener('transitionend', onEnd);
+    }
+  }
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (a) {
+      // initialize collapsed state
+      if (!item.classList.contains('open')) {
+        a.style.maxHeight = '0px';
+        a.style.overflow = 'hidden';
+        a.style.opacity = '0';
+        a.style.display = '';
+      } else {
+        a.style.maxHeight = 'none';
+        a.style.opacity = '1';
+        a.style.display = 'block';
+      }
+    }
+    if (q) {
+      q.addEventListener('click', () => animateFaqItem(item));
+    }
   });
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {

@@ -363,18 +363,23 @@ function renderPage(page = 1) {
     return;
   }
 
-  slice.forEach(meal => {
+  slice.forEach((meal, idx) => {
     const item = document.createElement('div');
-    item.className = 'food-item';
+    item.className = 'food-item appear';
     item.innerHTML = `
       <img src="${meal.thumb || 'https://via.placeholder.com/400x240?text=No+image'}" alt="${escapeHtml(meal.name)}">
       <h3><span class="meal-name">${escapeHtml(meal.name)}</span> <span class="price"><i>${meal.price}</i></span></h3>
       <p class="short-description">${escapeHtml(shortText(meal.instructions || meal.category || 'Delicious meal from TheMealDB'))}</p>
       <div style="margin:8px 0;">
-        <button class="order-btn">Order Now</button>
+        <button class="order-btn appear-btn">Order Now</button>
       </div>
     `;
+    // stagger animation slightly per item for nicer effect
+    item.style.animationDelay = (idx * 60) + 'ms';
     list.appendChild(item);
+    // set stagger for button inside (slightly after the card)
+    const btn = item.querySelector('.order-btn');
+    if (btn) btn.style.animationDelay = (idx * 60 + 120) + 'ms';
   });
 
   // Initialize order button handlers for newly created items
@@ -389,8 +394,10 @@ function renderPagination() {
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   const prev = document.createElement('button');
-  prev.textContent = 'Prev';
-  prev.className = 'btn btn-outline-secondary';
+  prev.innerHTML = '&#8592; Prev';
+  prev.className = 'pagination-btn btn btn-outline-secondary';
+  prev.setAttribute('aria-label', 'Previous page');
+  prev.dataset.type = 'prev';
   prev.disabled = currentPage <= 1;
   prev.addEventListener('click', () => {
     if (currentPage > 1) {
@@ -409,8 +416,10 @@ function renderPagination() {
   pagination.appendChild(info);
 
   const next = document.createElement('button');
-  next.textContent = 'Next';
-  next.className = 'btn btn-outline-secondary';
+  next.innerHTML = 'Next &#8594;';
+  next.className = 'pagination-btn btn btn-outline-secondary';
+  next.setAttribute('aria-label', 'Next page');
+  next.dataset.type = 'next';
   next.disabled = currentPage >= totalPages;
   next.addEventListener('click', () => {
     if (currentPage < totalPages) {
