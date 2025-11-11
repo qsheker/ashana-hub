@@ -404,6 +404,7 @@
             transition: width 0.3s ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
+
     /* Responsive */
     @media (max-width: 768px) {
       .navbar-container {
@@ -425,6 +426,75 @@
       .card {
         padding: 1.5rem;
       }
+    }
+  </style>
+
+  <!-- Responsive breakpoints: tablet (<=992px) and mobile (<=576px) -->
+  <style>
+    /* Tablet and small laptops */
+    @media (max-width: 992px) {
+      .navbar-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+      }
+      .navbar-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+      .navbar-links a { padding: 0.5rem 0.6rem; }
+
+      main { padding: 1.5rem 1rem; }
+      .hero-section { padding: 2rem 1rem; }
+      .hero-title { font-size: 2.0rem; }
+
+      /* Make the two-column layout stack vertically on tablets */
+      .row.g-4 { display: flex; flex-direction: column; }
+      .col-lg-4, .col-lg-8 { flex: 0 0 100%; max-width: 100%; }
+      aside.col-lg-4 { order: 2; } /* put contact under settings on tablet */
+      .col-lg-8 { order: 1; }
+
+      .card { padding: 1.25rem; }
+      .faq .form-control, .form-control { font-size: 0.95rem; }
+    }
+
+    /* Mobile phones */
+    @media (max-width: 576px) {
+      /* Stack navbar and make links full-width touch targets */
+      .navbar-container { padding: 0.6rem 0.75rem; }
+      .navbar-links { flex-direction: column; gap: 0.25rem; width: 100%; }
+      .navbar-links a {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        text-align: center;
+        border-radius: 8px;
+      }
+      .navbar-links a.active { background: rgba(175,13,13,0.06); }
+
+      .hero-section { padding: 1.25rem; }
+      .hero-title { font-size: 1.6rem; }
+      .hero-subtitle { font-size: 0.95rem; padding: 0 0.25rem; }
+
+      main { padding: 1rem 0.5rem; }
+      .card { padding: 1rem; border-radius: 10px; }
+
+      /* Form columns collapse to single column on small screens */
+      .col-md-6, .col-md-4, .col-md-2, .col-12 { flex: 0 0 100% !important; max-width: 100% !important; }
+      .row.g-3 > .col-md-6, .row.g-3 > .col-md-4, .row.g-3 > .col-md-2 { margin-bottom: 0.5rem; }
+
+      /* Make buttons fill width where appropriate */
+      .d-flex.align-items-center.gap-2.mt-3 { flex-direction: column; align-items: stretch; }
+      #saveBtn, .btn { width: 100%; }
+
+      /* FAQ and search adjustments */
+      #searchInput { width: 100%; margin-top: 0.5rem; }
+
+      /* Footer spacing */
+      .footer { padding: 1rem; font-size: 0.95rem; }
     }
   </style>
 
