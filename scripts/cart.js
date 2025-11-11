@@ -205,12 +205,3 @@ function removeItem(id) {
       });
       document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
     }
-
-    // // Progress bar on scroll
-    // $(window).on("scroll", function() {
-    //   let scrollTop = $(window).scrollTop();
-    //   let docHeight = $(document).height() - $(window).height();
-    //   let scrollPercent = (scrollTop / docHeight) * 100;
-
-    //   $("#progress-bar").css("width", scrollPercent + "%");
-    // });
